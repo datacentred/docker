@@ -1,0 +1,7 @@
+---
+classes:
+  - '::profile::openstack::horizon'
+
+service:
+  'horizon':
+    'command': '/usr/sbin/apachectl -DFOREGROUND'

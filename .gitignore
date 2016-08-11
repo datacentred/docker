@@ -1,0 +1,10 @@
+.vagrant
+*~
+.vagrantuser
+*.swp
+tags
+*.orig
+*.rej
+*.DS_Store
+.bundle
+Gemfile.lock

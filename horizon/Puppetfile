@@ -1,0 +1,19 @@
+forge 'https://forgeapi.puppetlabs.com'
+
+mod 'puppetlabs-stdlib',
+    :git => "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+
+mod 'puppetlabs/ntp',
+    :git => "https://github.com/puppetlabs/puppetlabs-ntp.git"
+
+mod 'markhellewell/aptcacherng'
+mod 'puppetlabs/apt'
+mod 'puppetlabs/apache'
+mod 'ajcrowe/supervisord'
+mod 'puppetlabs/concat', '1.2.5'
+mod 'openstack/horizon',
+    :git    => "https://github.com/openstack/puppet-horizon",
+    :branch => "master"
+mod 'openstack/openstacklib',
+    :git    => "https://github.com/openstack/puppet-openstacklib",
+    :branch => "master"

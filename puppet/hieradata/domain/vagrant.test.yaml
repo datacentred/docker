@@ -1,0 +1,5 @@
+---
+classes:
+  - '::profile::vagrant'
+
+os_api_ip: '172.16.1.132'

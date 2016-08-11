@@ -1,0 +1,18 @@
+forge 'https://forgeapi.puppetlabs.com'
+
+mod 'puppetlabs-stdlib',
+    :git => "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+mod 'puppetlabs/ntp',
+    :git => "https://github.com/puppetlabs/puppetlabs-ntp.git"
+mod 'ajcrowe/supervisord'
+mod 'puppetlabs/apt'
+mod 'puppetlabs/concat', '1.2.5'
+
+mod 'openstack/neutron'
+mod 'openstack/keystone'
+mod 'openstack/nova'
+mod 'openstack/openstacklib'
+mod 'openstack/vswitch'
+mod 'openstack/cinder'
+mod 'puppetlabs-inifile'
+mod 'puppetlabs-mysql'
