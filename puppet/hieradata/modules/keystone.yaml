@@ -13,6 +13,7 @@ keystone::database_connection: "mysql://%{hiera('keystone_db_user')}:%{hiera('ke
 keystone::log_level: 'DEBUG'
 keystone::validate_auth_url: "http://127.0.0.1:35357/"
 keystone::validate_service: false
+keystone::sync_db: false
 keystone::rabbit_hosts:
  - "osdbmq0.%{::domain}"
  - "osdbmq1.%{::domain}"

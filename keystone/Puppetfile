@@ -9,9 +9,6 @@ mod 'puppetlabs/apt'
 mod 'puppetlabs/concat', '1.2.5'
 mod 'puppetlabs/apache'
 
-mod 'datacentred/dockerbuild',
-    :git => "https://dc-jenkins:27485be45693278ac9be41d4540c8ac4f1adc6b7@github.com/datacentred/dockerbuild.git"
-
 mod 'openstack/neutron'
 mod 'openstack/keystone',
     :git    => "https://github.com/openstack/puppet-keystone.git",
