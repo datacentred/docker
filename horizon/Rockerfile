@@ -32,7 +32,7 @@ RUN r10k puppetfile install --moduledir /etc/puppetlabs/code/modules && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-EXPOSE 5000 35357
+EXPOSE 80
 
 CMD ["/usr/bin/supervisord", "-n"]
 

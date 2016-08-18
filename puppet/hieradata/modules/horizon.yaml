@@ -16,10 +16,6 @@ horizon::neutron_options:
 horizon::django_debug: true
 horizon::api_versions:
   'identity': '2'
-horizon::cache_server_ip:
- - "osdbmq0.%{::domain}"
- - "osdbmq1.%{::domain}"
- - "osdbmq2.%{::domain}"
 horizon::cache_server_port: '11211'
 horizon::session_timeout: '3600'
 horizon::password_autocomplete: 'on'
