@@ -10,7 +10,7 @@ This Dockerfile generates an image that you can then run and interact with the O
 
 Run it with:
 
-`$ docker run --name datacentred/dcdcli --hostname dcdcli -p 8000:8000 dcdcli`
+`$ docker run --name dcdcli --hostname dcdcli -d -p 8000:8000 datacentred/dcdcli`
 
 [^1]: If you don't want to build from scratch, the run command will pull automatically the prebuilt image from `hub.docker.com`.
 
@@ -22,4 +22,4 @@ You should then be prompted for your various project-related credentials, after 
 
 ## TODO
 
-Make image smaller (!).
+Make image smaller (!). 
