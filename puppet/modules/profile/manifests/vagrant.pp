@@ -5,8 +5,8 @@
 #
 class profile::vagrant {
 
-  host { 'compute.datacentred.io':
-    ip => hiera(os_api_ip)
-  }
+#  host { 'compute.datacentred.io':
+#    ip => hiera(os_api_ip)
+#  }
 
 }
