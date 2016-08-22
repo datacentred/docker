@@ -1,11 +1,8 @@
 # == Class: ::profile::openstack::horizon
 #
-# Buld the OpenStack Dashboard
+# Build the OpenStack Dashboard
 #
 class profile::openstack::horizon {
   include ::horizon
   include ::branding::horizon
-
-  Class['::horizon'] ->
-  Class['::branding::horizon']
 }

@@ -5,3 +5,5 @@ classes:
 service:
   'horizon':
     'command': '/usr/sbin/apachectl -DFOREGROUND'
+
+branding::horizon::release: 'mitaka'
