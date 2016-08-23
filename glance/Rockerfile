@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Nick Jones "nick.jones@datacentred.co.uk"
 
+ENV DOCKER_BUILD_DOMAIN='sal01.datacentred.co.uk'
 ENV FACTER_role='glance'
 ENV FACTER_domain=${DOCKER_BUILD_DOMAIN:-vagrant.test}
 

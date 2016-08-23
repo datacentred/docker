@@ -1,0 +1,15 @@
+---
+ceph::manage_repo: false
+ceph::conf_merge: true
+
+ceph::conf:
+  global:
+    fsid: 'd222d2b3-b4c4-4443-9717-0c4ccadae458'
+    mon initial members: 'ceph-mon-0,ceph-mon-1,ceph-mon-2'
+    mon host: '10.10.104.187,10.10.104.214,10.10.104.184'
+    auth supported: 'cephx'
+    public network: '10.10.104.0/24'
+    cluster network: '10.10.96.0/24'
+    osd crush chooseleaf type: '2'
+
+ceph::keys_merge: true

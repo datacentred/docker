@@ -21,7 +21,10 @@ mod 'openstack/glance',
 mod 'openstack/openstacklib',
     :git    => "https://github.com/openstack/puppet-openstacklib",
     :branch => "master"
-
 mod 'openstack/oslo',
     :git    => "https://github.com/openstack/puppet-oslo",
     :branch => "master"
+
+mod 'datacentred/ceph',
+    :git => "https://github.com/datacentred/puppet-ceph",
+    :tag => "v1.2.0"

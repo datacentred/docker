@@ -5,20 +5,9 @@ class profile::openstack::glance {
   include ::glance::registry
   include ::glance::notify::rabbitmq
   include ::glance::policy
+  include ::glance::backend::rbd
+  include ::ceph
 
-  # TODO: Remove post-upgrade
-  file_line { 'glance_api_auth_version':
-    ensure  => absent,
-    path    => '/etc/glance/glance-api.conf',
-    line    => 'auth_version=V2.0',
-    require => Package['glance-api'],
-  }
-
-  file_line { 'glance_registry_auth_version':
-    ensure  => absent,
-    path    => '/etc/glance/glance-registry.conf',
-    line    => 'auth_version=V2.0',
-    require => Package['glance-registry'],
-  }
+  Class[::ceph] -> Class['::glance::backend::rbd']
 
 }
