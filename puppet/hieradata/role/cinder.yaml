@@ -1,0 +1,11 @@
+---
+classes:
+  - '::profile::openstack::cinder'
+
+service:
+  'cinder-api':
+    'command': '/usr/bin/cinder-api'
+  'cinder-scheduler':
+    'command': '/usr/bin/cinder-scheduler'
+  'cinder-volume':
+    'command': '/usr/bin/cinder-volume'
