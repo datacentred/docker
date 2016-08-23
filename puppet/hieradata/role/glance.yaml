@@ -1,0 +1,13 @@
+---
+classes:
+  - '::profile::openstack::glance'
+
+service:
+  'glance-api':
+    'command': '/usr/bin/glance-api'
+  'glance-registry':
+    'command': '/usr/bin/glance-registry'
+
+glance_db: 'glance'
+glance_db_user: 'glance'
+glance_db_pass:  'DishrubChop2'
