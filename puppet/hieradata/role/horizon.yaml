@@ -5,5 +5,9 @@ classes:
 service:
   'horizon':
     'command': '/usr/sbin/apachectl -DFOREGROUND'
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
 
 branding::horizon::release: 'mitaka'

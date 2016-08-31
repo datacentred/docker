@@ -15,9 +15,11 @@ mod 'puppetlabs/apt'
 mod 'puppetlabs/apache'
 mod 'ajcrowe/supervisord'
 mod 'puppetlabs/concat', '1.2.5'
+
 mod 'openstack/horizon',
     :git    => "https://github.com/openstack/puppet-horizon.git",
     :branch => "master"
+
 mod 'openstack/openstacklib',
     :git    => "https://github.com/openstack/puppet-openstacklib",
     :branch => "master"

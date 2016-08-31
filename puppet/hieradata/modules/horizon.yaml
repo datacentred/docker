@@ -18,10 +18,10 @@ horizon::neutron_options:
 horizon::django_debug: true
 horizon::api_versions:
   'identity': '2'
-horizon::cache_server_port: '11211'
 horizon::session_timeout: '3600'
 horizon::password_autocomplete: 'on'
 horizon::available_themes:
   - { name: 'datacentred', label: 'DataCentred', path: 'themes/datacentred' }
 horizon::default_theme: 'datacentred'
 horizon::images_panel: 'angular'
+horizon::log_handler: 'console'

@@ -12,7 +12,7 @@ MOUNT ~/.config/keys:/keys
 ENV PUPPET_AGENT_VERSION="1.5.0" UBUNTU_CODENAME="xenial" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
 RUN apt-get update && \
-    apt-get install -y lsb-release vim git wget=1.17.1-1ubuntu1 && \
+    apt-get install -y lsb-release inetutils-ping vim git wget && \
     wget https://apt.puppetlabs.com/puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
     dpkg -i puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
     rm puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
