@@ -8,3 +8,4 @@ tags
 *.DS_Store
 .bundle
 Gemfile.lock
+.vim_session

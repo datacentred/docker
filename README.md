@@ -1,4 +1,4 @@
-# README
+# Building DataCentred Docker images
 
 This repository contains configuration code and data required to build various Docker images for use at DataCentred.
 
