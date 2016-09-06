@@ -24,7 +24,8 @@ mod 'openstack/openstacklib',
 mod 'openstack/oslo',
     :git    => "https://github.com/openstack/puppet-oslo",
     :branch => "master"
+mod 'openstack/keystone',
+    :git    => "https://github.com/openstack/puppet-keystone",
+    :branch => "master"
 
-mod 'datacentred/ceph',
-    :git => "https://github.com/datacentred/puppet-ceph",
-    :tag => "v1.2.0"
+mod 'spjmurray/ceph', '1.5.1'
