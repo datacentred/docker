@@ -4,8 +4,16 @@ classes:
 
 service:
   'glance-api':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
     'command': '/usr/bin/glance-api'
   'glance-registry':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
     'command': '/usr/bin/glance-registry'
 
 glance_db: 'glance'

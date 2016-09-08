@@ -18,7 +18,8 @@ glance::api::known_stores:
     - file
 glance::api::default_store: 'rbd'
 glance::api::debug: true
-glance::api::logging::log_file: '/var/log/glance/glance-api.log'
+glance::api::use_stderr: true
+glance::api::log_file: "%{::os_service_default}"
 
 glance::registry::auth_type: 'keystone'
 glance::registry::auth_uri: "https://%{hiera('os_api_host')}:5000/"
@@ -31,7 +32,9 @@ glance::registry::use_syslog: false
 glance::registry::manage_service: false
 glance::registry::enabled: false
 glance::registry::debug: true
-glance::registry::logging::log_file: '/var/log/glance/glance-registry.log'
+glance::registry::use_stderr: true
+glance::registry::log_file: "${::os_service_default}"
+
 glance::registry::sync_db: false
 
 glance::backend::rbd::rbd_store_ceph_conf: '/etc/ceph/ceph.conf'
@@ -47,9 +50,6 @@ glance::notify::rabbitmq::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
 glance::notify::rabbitmq::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
 glance::notify::rabbitmq::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
 glance::notify::rabbitmq::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
-
-glance::cache::pruner::command_options: '>> /var/log/glance/glance-cache-pruner.log 2>&1'
-glance::cache::cleaner::command_options: '>> /var/log/glance/glance-cache-cleaner.log 2>&1'
 
 glance::policy::policies:
   glance-context_is_admin:
