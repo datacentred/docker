@@ -2,6 +2,9 @@
 keystone::debug: true
 keystone::verbose: true
 keystone::use_syslog: false
+keystone::use_stderr: true
+keystone::log_dir: "%{::os_service_default}"
+keystone::log_file: "%{::os_service_default}"
 keystone::manage_service: false
 keystone::enabled: true
 keystone::catalog_type: 'sql'
@@ -10,7 +13,6 @@ keystone::enable_pki_setup: false
 keystone::token_expiration: '14400'
 keystone::token_provider: 'keystone.token.providers.uuid.Provider'
 keystone::database_connection: "mysql://%{hiera('keystone_db_user')}:%{hiera('keystone_db_pass')}@%{hiera('os_api_host')}/keystone"
-keystone::log_level: 'DEBUG'
 keystone::validate_auth_url: "http://127.0.0.1:35357/"
 keystone::validate_service: false
 keystone::sync_db: false
@@ -28,8 +30,8 @@ keystone::memcache_servers:
  - "osdbmq0.%{::domain}"
  - "osdbmq1.%{::domain}"
  - "osdbmq2.%{::domain}"
-keystone::public_endpoint: ''
-keystone::admin_endpoint: ''
+keystone::public_endpoint: "https://%{hiera('os_api_host')}:5000"
+keystone::admin_endpoint: "https://%{hiera('os_api_host')}:35357"
 keystone::service_name: 'httpd'
 keystone::roles::admin::email: "devops@datacentred.co.uk"
 keystone::roles::admin::password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEARLlxdPyh/8GB1umFwHh0nuG8mN2wLkyply3vssX+CUhS2tIgjuAMJGfsESoVy1wTn9NL7VMGvVc127BLB2VwqdvbuDYTqtScldkVBeNIVVVxiiF32x0+WB8cRi4vNLeosRzXLl6ESl7EyVPehkiYI69+quUmhjBwYA6fUQNkG5oPDn+Qb3ajXU5CS/EumhsywgJy4Rt+C6+tmch6V+JlnaGHwfiRgyJKYgn/CwoKN18vTByrVHthg1RtR482bPAk+hnQHav6zF/cVpxgLoOCRU240cGiHT0Nd2vk+XGGIoL5THHn1BNDeFECv+ulxsn9V5KXtPauojM0KY7GqvBSGDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDEzHq3q2WuX3KTyGnsVmYVgBAaRDgbp0mVzYBpowPknCAW]
