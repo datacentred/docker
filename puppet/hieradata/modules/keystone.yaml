@@ -2,6 +2,7 @@
 keystone::debug: true
 keystone::verbose: true
 keystone::use_syslog: false
+keystone::use_stderr: true
 keystone::manage_service: false
 keystone::enabled: true
 keystone::catalog_type: 'sql'
@@ -10,7 +11,6 @@ keystone::enable_pki_setup: false
 keystone::token_expiration: '14400'
 keystone::token_provider: 'keystone.token.providers.uuid.Provider'
 keystone::database_connection: "mysql://%{hiera('keystone_db_user')}:%{hiera('keystone_db_pass')}@%{hiera('os_api_host')}/keystone"
-keystone::log_level: 'DEBUG'
 keystone::validate_auth_url: "http://127.0.0.1:35357/"
 keystone::validate_service: false
 keystone::sync_db: false
