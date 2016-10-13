@@ -1,6 +1,5 @@
 ---
-keystone::debug: true
-keystone::verbose: true
+keystone::debug: false
 keystone::use_syslog: false
 keystone::use_stderr: true
 keystone::log_dir: "%{::os_service_default}"
@@ -11,7 +10,7 @@ keystone::catalog_type: 'sql'
 keystone::admin_token: "%{hiera('keystone_admin_uuid')}"
 keystone::enable_pki_setup: false
 keystone::token_expiration: '14400'
-keystone::token_provider: 'keystone.token.providers.uuid.Provider'
+keystone::token_provider: 'uuid'
 keystone::database_connection: "mysql://%{hiera('keystone_db_user')}:%{hiera('keystone_db_pass')}@%{hiera('os_api_host')}/keystone"
 keystone::validate_auth_url: "http://127.0.0.1:35357/"
 keystone::validate_service: false
@@ -24,7 +23,7 @@ keystone::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
 keystone::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
 keystone::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
 keystone::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
-keystone::token_driver: 'keystone.token.persistence.backends.memcache_pool.Token'
+keystone::token_driver: 'memcache'
 keystone::cache_backend: 'keystone.cache.memcache_pool'
 keystone::memcache_servers:
  - "osdbmq0.%{::domain}"
