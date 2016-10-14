@@ -15,7 +15,9 @@ horizon::neutron_options:
   'enable_firewall': true
   'enable_ha_router': true
   'enable_vpn': true
-horizon::django_debug: true
+horizon::django_debug: false
+horizon::api_versions:
+  'identity': '2'
 horizon::session_timeout: '3600'
 horizon::password_autocomplete: 'on'
 horizon::available_themes:
