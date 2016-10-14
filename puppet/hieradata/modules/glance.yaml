@@ -17,7 +17,7 @@ glance::api::known_stores:
     - http
     - file
 glance::api::default_store: 'rbd'
-glance::api::debug: true
+glance::api::debug: false
 glance::api::use_stderr: true
 glance::api::log_file: "%{::os_service_default}"
 
@@ -31,7 +31,7 @@ glance::registry::database_connection: "mysql://%{hiera('glance_db_user')}:%{hie
 glance::registry::use_syslog: false
 glance::registry::manage_service: false
 glance::registry::enabled: false
-glance::registry::debug: true
+glance::registry::debug: false
 glance::registry::use_stderr: true
 glance::registry::log_file: "${::os_service_default}"
 

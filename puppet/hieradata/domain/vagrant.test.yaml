@@ -2,4 +2,6 @@
 classes:
   - '::profile::vagrant'
 
-os_api_ip: '172.16.1.132'
+keystone_admin_uuid: '33812e81-81e3-4d0e-b3b8-210d8d44d93f'
+keystone_admin_pw: 'WifrekicIpt6'
+keystone_db_pass: 'AmjemejHuph8'
