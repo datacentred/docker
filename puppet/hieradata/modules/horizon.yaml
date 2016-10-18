@@ -1,10 +1,11 @@
 ---
 horizon::secret_key: ENC[PKCS7,MIIBmQYJKoZIhvcNAQcDoIIBijCCAYYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEARenG+hLHPZ876D9JRrExiyygbkXxAO1/PdNPxnYLmn4TRv05sYsxFUTWhQWo7tBdLyNvEz5Uh2pcp6WA0hqKJRg/SgbSeLc12mCRpGxZyR8CeZBuwadUs4oXanpM8E2yvM87lrkFDcF+PJ8GmtV8cVGp7As/cpBJfYyUeMkHaU7vJDGKPgAiyR7aIcqrVdUVeNxQefU3hSzQAbFOFh4rNdTaGqSRmA9hhHAMB77J0usaO8ybCIQyyiKBzTt7Y4VpaQNofvJluk0Vtd5jgKvO5ivRKrNTLlt6N3Ax/7UGY8mXms5rsG0ZKoVW/s0utfkBMT6ZyO4+qOitljyqEFNCoTBcBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBABIxCjRtbp7Gx2FLHPQLhYgDDdFuGIT4NFyk77z7CgCNCTzZsysraTijLA52o2DPcOfeDqK9K8UkLPosUQy3rsbpc=]
-horizon::keystone_url: "https://%{hiera('os_api_host')}:5000/v2.0"
-horizon::keystone_default_domain: 'Default'
+horizon::keystone_url: "https://%{hiera('os_api_host')}:5000/v3"
+horizon::keystone_default_domain: 'default'
 horizon::keystone_multidomain_support: false
 horizon::keystone_default_role: '_member_'
 horizon::api_result_limit: 1000
+horizon::overview_days_range: '7'
 horizon::compress_offline: true
 horizon::allowed_hosts: '*'
 horizon::server_aliases:
@@ -17,7 +18,10 @@ horizon::neutron_options:
   'enable_vpn': true
 horizon::django_debug: false
 horizon::api_versions:
-  'identity': '2'
+  'identity': '3'
+  'compute': '2'
+  'image': '2'
+  'volume': '2'
 horizon::session_timeout: '3600'
 horizon::password_autocomplete: 'on'
 horizon::available_themes:
