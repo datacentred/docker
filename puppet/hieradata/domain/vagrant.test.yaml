@@ -4,4 +4,9 @@ classes:
 
 keystone_admin_uuid: '33812e81-81e3-4d0e-b3b8-210d8d44d93f'
 keystone_admin_pw: 'WifrekicIpt6'
+keystone_glance_password: 'kiphMauHyft5'
+
 keystone_db_pass: 'AmjemejHuph8'
+glance_db_pass:  'DishrubChop2'
+
+osdbmq_rabbitmq_pw: 'raytGiofsOk5'
