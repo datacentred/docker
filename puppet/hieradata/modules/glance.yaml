@@ -6,7 +6,7 @@ glance::api::authtoken::auth_url: "https://%{hiera('os_api_host')}:35357"
 glance::api::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000"
 glance::api::authtoken::user_domain_name: 'default'
 glance::api::authtoken::project_domain_name: 'default'
-glance::api::authtoken::project_name: 'default'
+glance::api::authtoken::project_name: 'services'
 glance::registry::authtoken::region_name: 'sal01'
 
 glance::api::registry_host: "%{hiera('os_api_host')}"
@@ -33,7 +33,7 @@ glance::registry::authtoken::auth_url: "https://%{hiera('os_api_host')}:35357"
 glance::registry::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000"
 glance::registry::authtoken::user_domain_name: 'default'
 glance::registry::authtoken::project_domain_name: 'default'
-glance::registry::authtoken::project_name: 'default'
+glance::registry::authtoken::project_name: 'services'
 glance::registry::authtoken::region_name: 'sal01'
 
 glance::registry::database_connection: "mysql://%{hiera('glance_db_user')}:%{hiera('glance_db_pass')}@%{hiera('os_api_host')}:3306/%{hiera('glance_db')}"
