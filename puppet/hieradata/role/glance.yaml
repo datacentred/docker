@@ -18,7 +18,6 @@ service:
 
 glance_db: 'glance'
 glance_db_user: 'glance'
-glance_db_pass:  'DishrubChop2'
 
 ceph::keys:
   /etc/ceph/ceph.client.glance.keyring:
