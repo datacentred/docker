@@ -1,0 +1,31 @@
+forge 'https://forgeapi.puppetlabs.com'
+
+mod 'puppetlabs-stdlib',
+    :git => "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+
+mod 'puppetlabs/ntp',
+    :git => "https://github.com/puppetlabs/puppetlabs-ntp.git"
+
+mod 'markhellewell/aptcacherng'
+mod 'puppetlabs/apt'
+mod 'puppetlabs/apache'
+mod 'ajcrowe/supervisord'
+mod 'puppetlabs/concat', '1.2.5'
+mod 'puppetlabs/mysql'
+
+mod 'puppetlabs/inifile'
+
+mod 'openstack/cinder',
+    :git    => "https://github.com/openstack/puppet-cinder",
+    :branch => "master"
+mod 'openstack/openstacklib',
+    :git    => "https://github.com/openstack/puppet-openstacklib",
+    :branch => "master"
+mod 'openstack/oslo',
+    :git    => "https://github.com/openstack/puppet-oslo",
+    :branch => "master"
+mod 'openstack/keystone',
+    :git    => "https://github.com/openstack/puppet-keystone",
+    :branch => "master"
+
+mod 'spjmurray/ceph', '1.5.1'
