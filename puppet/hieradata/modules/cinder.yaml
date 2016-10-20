@@ -1,0 +1,58 @@
+---
+cinder::keystone::authtoken::username: 'cinder'
+cinder::keystone::authtoken::password: "%{hiera('keystone_cinder_password')}"
+cinder::keystone::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000/"
+cinder::keystone::authtoken::auth_url: "https://%{hiera('os_api_host')}:35357/"
+cinder::keystone::authtoken::project_name: 'services'
+cinder::keystone::authtoken::user_domain_name: 'default'
+cinder::keystone::authtoken::project_domain_name: 'default'
+cinder::keystone::authtoken::region_name: 'sal01'
+
+cinder::database_connection: "mysql://%{hiera('cinder_db_user')}:%{hiera('cinder_db_pass')}@%{hiera('os_api_host')}/%{hiera('cinder_db')}?charset=utf8"
+cinder::control_exchange: 'cinder'
+cinder::rpc_backend: 'rabbit'
+
+cinder::rabbit_hosts:
+ - osdbmq0.%{::domain}
+ - osdbmq1.%{::domain}
+ - osdbmq2.%{::domain}
+cinder::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
+cinder::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
+cinder::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
+cinder::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
+cinder::rabbit_ha_queues: true
+
+cinder::enable_v1_api: false
+cinder::enable_v2_api: true
+cinder::enable_v3_api: true
+cinder::use_stderr: true
+cinder::log_dir: "%{::os_service_default}"
+cinder::log_file: "%{::os_service_default}"
+
+cinder::storage_availability_zone: 'Production'
+cinder::default_availability_zone: 'Production'
+
+cinder::api::os_region_name: 'sal01'
+cinder::api::default_volume_type: 'Ceph'
+cinder::api::nova_catalog_info: 'compute:nova:publicURL'
+cinder::api::nova_catalog_admin_info: 'compute:nova:adminURL'
+cinder::api::sync_db: false
+cinder::api::manage_servvice: false
+cinder::api::public_endpoint: "https://%{hiera('os_api_host')}:8776/v2/%(tenant_id)s"
+
+cinder::scheduler::scheduler_driver: 'cinder.scheduler.simple.SimpleScheduler'
+cinder::scheduler::manage_service: false
+
+cinder::glance::glance_api_servers: "https://%{hiera('os_api_host')}:9292"
+
+cinder::volume::rbd::rbd_pool: 'cinder.volumes'
+cinder::volume::rbd::rbd_user: 'cinder'
+cinder::volume::rbd::rbd_secret_uuid: '42991612-85dc-42e4-ae3c-49cf07e98b70'
+
+cinder::quota::quota_volumes: '10'
+cinder::quota::quota_snapshots: '10'
+cinder::quota::quota_gigabytes: '200'
+
+cinder::backends::enabled_backends:
+  - 'cinder.volumes'
+  - 'cinder.volumes.flash'

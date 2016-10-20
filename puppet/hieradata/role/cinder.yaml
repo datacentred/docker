@@ -1,0 +1,34 @@
+---
+classes:
+  - '::profile::openstack::cinder'
+
+service:
+  'cinder-api':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
+    'command': '/usr/bin/cinder-api'
+  'cinder-volume':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
+    'command': '/usr/bin/cinder-volume'
+  'cinder-scheduler':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
+    'command': '/usr/bin/cinder-scheduler'
+
+cinder_db: 'cinder'
+cinder_db_user: 'cinder'
+
+ceph::keys:
+  /etc/ceph/ceph.client.glance.keyring:
+    user: 'client.glance'
+    key: ENC[PKCS7,MIIBmQYJKoZIhvcNAQcDoIIBijCCAYYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAfXcr0d0BheOBDBbg2evcdQWufLfS7QbQJ8hzFhss2R7LrOCYBhGlwMnsrV0fp4K2k8p3riqchFYyFGq+hvxJLVW2WZWNwK+EP1UxYsVpG521lUVe6TTP9GUVNaTFdRelafvsWaP1IBCFHsLhHX9fb8VUXZ4shjKaHZpO40oiFB/Yy6RaWm3XA0j+HVKGos1N/PVO8fdzB0ariP6swk12NaKBU12GWiQjiTjDwmZjCxlTgyx1/W6LHCarlQeSNUjND70DXEk8Y1TVHQL2vCDEEs5zFlb4tccgzaNcXV5BL6UMFN/yZdVT55oDezWdfscRhORqli40uyj2rNPdq3NfhTBcBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCsfGo+UmfEXH7NwSCD2ZFggDD8YVBmidbTaNpkA2YDgY7T+JfAdHw5WVHUHSj4utR25lQp8bJAefUoR38PBcZwr8A=]
+  /etc/ceph/ceph.client.cinder.keyring:
+    user: 'client.cinder'
+    key: ENC[PKCS7,MIIBmQYJKoZIhvcNAQcDoIIBijCCAYYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAfXcr0d0BheOBDBbg2evcdQWufLfS7QbQJ8hzFhss2R7LrOCYBhGlwMnsrV0fp4K2k8p3riqchFYyFGq+hvxJLVW2WZWNwK+EP1UxYsVpG521lUVe6TTP9GUVNaTFdRelafvsWaP1IBCFHsLhHX9fb8VUXZ4shjKaHZpO40oiFB/Yy6RaWm3XA0j+HVKGos1N/PVO8fdzB0ariP6swk12NaKBU12GWiQjiTjDwmZjCxlTgyx1/W6LHCarlQeSNUjND70DXEk8Y1TVHQL2vCDEEs5zFlb4tccgzaNcXV5BL6UMFN/yZdVT55oDezWdfscRhORqli40uyj2rNPdq3NfhTBcBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCsfGo+UmfEXH7NwSCD2ZFggDD8YVBmidbTaNpkA2YDgY7T+JfAdHw5WVHUHSj4utR25lQp8bJAefUoR38PBcZwr8A=]
