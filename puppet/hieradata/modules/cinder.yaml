@@ -41,7 +41,6 @@ cinder::api::sync_db: false
 cinder::api::manage_servvice: false
 cinder::api::public_endpoint: "https://%{hiera('os_api_host')}:8776/v2/%(tenant_id)s"
 
-cinder::scheduler::scheduler_driver: 'cinder.scheduler.simple.SimpleScheduler'
 cinder::scheduler::manage_service: false
 
 cinder::glance::glance_api_servers: "https://%{hiera('os_api_host')}:9292"
