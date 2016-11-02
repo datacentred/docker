@@ -22,6 +22,7 @@ cinder::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
 cinder::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
 cinder::rabbit_ha_queues: true
 
+cinder::host: "%{hiera('os_api_host')}"
 cinder::enable_v1_api: false
 cinder::enable_v2_api: true
 cinder::enable_v3_api: true
