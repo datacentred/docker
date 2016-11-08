@@ -17,7 +17,7 @@ mod 'ajcrowe/supervisord'
 mod 'puppetlabs/concat', '1.2.5'
 
 mod 'openstack/horizon',
-    :git    => "https://github.com/openstack/puppet-horizon.git",
+    :git    => "https://github.com/datacentred/puppet-horizon.git",
     :branch => "master"
 
 mod 'openstack/openstacklib',

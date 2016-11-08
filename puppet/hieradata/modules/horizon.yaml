@@ -29,3 +29,4 @@ horizon::available_themes:
 horizon::default_theme: 'datacentred'
 horizon::images_panel: 'angular'
 horizon::log_handler: 'console'
+horizon::password_retrieve: true
