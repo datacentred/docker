@@ -25,6 +25,7 @@ glance::api::debug: false
 glance::api::use_stderr: true
 glance::api::log_dir: "%{::os_service_default}"
 glance::api::log_file: "%{::os_service_default}"
+glance::api::workers: '8'
 
 glance::registry::authtoken::username: 'glance'
 glance::registry::authtoken::password: "%{hiera('keystone_glance_password')}"
@@ -44,6 +45,7 @@ glance::registry::debug: false
 glance::registry::use_stderr: true
 glance::registry::log_dir: "%{::os_service_default}"
 glance::registry::log_file: "%{::os_service_default}"
+glance::registry::workers: '8'
 
 glance::registry::sync_db: false
 
