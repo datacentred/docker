@@ -1,0 +1,36 @@
+DOMAIN=sal01.datacentred.co.uk
+RELEASE=mitaka
+VCSREF=$(shell git rev-parse --short HEAD)
+DATE=$(shell date --rfc-3339=date)
+REGISTRY=registry.datacentred.services:5000
+
+all:	keystone glance cinder horizon
+.PHONY: all keystone glance cinder horizon clean
+
+keystone:
+		NAME=$@ DATE=$(DATE) VCSREF=$(VCSREF) \
+		rocker build -f common/Rockerfile --vars common/common.yaml --var EXPOSE="5000 35357" \
+		--var DOCKER_BUILD_DOMAIN=$(DOMAIN) --var TAG=$@:$(RELEASE)-$(VCSREF) --var ROLE=$@ .
+		docker tag $@:$(RELEASE)-$(VCSREF) $(REGISTRY)/keystone:$(RELEASE)-$(VCSREF)
+		
+glance:
+		NAME=$@ DATE=$(DATE) VCSREF=$(VCSREF) \
+		NAME="glance" rocker build -f common/Rockerfile --vars common/common.yaml --var EXPOSE="9191 9292" \
+		--var DOCKER_BUILD_DOMAIN=$(DOMAIN) --var TAG=glance:$(RELEASE)-$(VCSREF) --var ROLE=$@ .
+		docker tag $@:$(RELEASE)-$(VCSREF) $(REGISTRY)/$@:$(RELEASE)-$(VCSREF)
+		
+cinder:
+		NAME=$@ DATE=$(DATE) VCSREF=$(VCSREF) \
+		rocker build -f common/Rockerfile --vars common/common.yaml --var EXPOSE="8776" \
+		--var DOCKER_BUILD_DOMAIN=$(DOMAIN) --var TAG=$@:$(RELEASE)-$(VCSREF) --var ROLE=$@ .
+		docker tag $@:$(RELEASE)-$(VCSREF) $(REGISTRY)/$@:$(RELEASE)-$(VCSREF)
+		
+horizon:
+		NAME=$@ DATE=$(DATE) VCSREF=$(VCSREF) \
+		rocker build -f common/Rockerfile --vars common/common.yaml --var EXPOSE="80" \
+		--var DOCKER_BUILD_DOMAIN=$(DOMAIN) --var TAG=$@:$(RELEASE)-$(VCSREF) --var ROLE=$@ .
+		docker tag $@:$(RELEASE)-$(VCSREF) $(REGISTRY)/$@:$(RELEASE)-$(VCSREF)
+
+clean:
+		docker rmi $$(docker images -f "dangling=true" -q)
+		docker rm -v $$(docker ps -a -q -f status=exited)

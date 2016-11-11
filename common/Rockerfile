@@ -18,11 +18,15 @@ COPY puppet/r10k/{{ .ROLE }} /Puppetfile
 COPY {{ .COPY.profile }}
 COPY {{ .COPY.defaultpp }}
 
-RUN  {{ .RUN.puppet_apply }}
+RUN {{ .RUN.puppet_apply }}
 
 CMD {{ .CMD }}
 
 EXPOSE {{ .EXPOSE }}
 TAG {{ .TAG }}
+
+LABEL org.label-schema.build-date={{ .Env.DATE }}
+LABEL org.label-schema.name={{ .Env.NAME }}
+LABEL org.label-schema.vcs-ref={{ .Env.VCSREF }}
 
 # vim:ts=4:sw=4:et:ft=Dockerfile

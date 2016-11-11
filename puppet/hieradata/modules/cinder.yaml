@@ -33,7 +33,7 @@ cinder::log_file: "%{::os_service_default}"
 cinder::storage_availability_zone: 'Production'
 cinder::default_availability_zone: 'Production'
 
-cinder::api::service_workers: '4'
+cinder::api::service_workers: '8'
 cinder::api::os_region_name: 'sal01'
 cinder::api::default_volume_type: 'Ceph'
 cinder::api::nova_catalog_info: 'compute:nova:publicURL'
