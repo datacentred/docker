@@ -2,6 +2,7 @@
 classes:
   - '::apt'
   - '::supervisord'
+  - '::profile::util::prompt'
 
 os_api_host: 'compute.datacentred.io'
 

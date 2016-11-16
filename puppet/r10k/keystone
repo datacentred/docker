@@ -14,7 +14,9 @@ mod 'puppetlabs-mysql'
 mod 'openstack/keystone',
     :git    => "https://github.com/openstack/puppet-keystone.git",
     :branch => "master"
-mod 'openstack/nova'
+mod 'openstack/nova',
+    :git    => "https://github.com/openstack/puppet-nova.git",
+    :branch => "master"
 mod 'openstack/openstacklib',
     :git    => "https://github.com/openstack/puppet-openstacklib.git",
     :branch => "master"
