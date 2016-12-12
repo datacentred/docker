@@ -1,7 +1,8 @@
 :hierarchy:
     - "nodes/%{::hostname}"
     - "role/%{::role}"
-    - "domain/%{::domain}"
+    - "domains/%{::domain}"
+    - "domains/%{::domain}/modules/%{calling_module}"
     - "modules/%{calling_module}"
     - common
 :backends:

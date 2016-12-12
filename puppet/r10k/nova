@@ -7,12 +7,23 @@ mod 'puppetlabs/ntp',
 mod 'ajcrowe/supervisord'
 mod 'puppetlabs/apt'
 mod 'puppetlabs/concat', '1.2.5'
-
-mod 'openstack/neutron'
-mod 'openstack/keystone'
-mod 'openstack/nova'
-mod 'openstack/openstacklib'
-mod 'openstack/vswitch'
-mod 'openstack/cinder'
 mod 'puppetlabs-inifile'
 mod 'puppetlabs-mysql'
+
+mod 'openstack/glance',
+    :git    => "https://github.com/openstack/puppet-glance"
+
+mod 'openstack/openstacklib',
+    :git    => "https://github.com/openstack/puppet-openstacklib"
+
+mod 'openstack/oslo',
+    :git    => "https://github.com/openstack/puppet-oslo"
+
+mod 'openstack/keystone',
+    :git    => "https://github.com/openstack/puppet-keystone"
+
+mod 'openstack/cinder',
+    :git    => "https://github.com/openstack/puppet-cinder"
+
+mod 'openstack/nova',
+    :git => "https://github.com/openstack/puppet-nova.git"

@@ -1,0 +1,14 @@
+---
+nova::rabbit_hosts:
+ - osdbmq0.%{::domain}
+ - osdbmq1.%{::domain}
+ - osdbmq2.%{::domain}
+
+nova::memcached_servers:
+ - osdbmq0.%{::domain}
+ - osdbmq1.%{::domain}
+ - osdbmq2.%{::domain}
+
+nova::api::osapi_compute_workers: '8'
+nova::api::metadata_workers: '8'
+
