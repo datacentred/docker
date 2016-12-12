@@ -16,21 +16,22 @@ Per-image Puppetfiles under `puppet/r10k`.  This approach facilitates module ver
 
 ## Building an image
 
-Building an existing image is a case of running `rocker build` with a few options.  From the repository directory:
+All images to be built, along with any of their configurable parameters, are defined in a `Makefile`.  As an example, to build Horizon for testing locally do:
 
-```shell
-$ rocker build -f common/Rockerfile --vars common/common.yaml \
-  --var EXPOSE="80" --var TAG=horizon:mitaka --var ROLE=horizon .
+```
+make horizon DOMAIN="vagrant.test"
 ```
 
-_NB Don't miss off the trailing `.` as this is used to determine the relative path to various files!_
+After a couple of minutes you'll end up with an image like `horizon:mitaka-3038390` with configuration tailored for running locally in a Vagrant development environment.
 
-This command ensures Puppet inherits the `horizon` role which declares various classes and scopes some parameters in Hiera.  If all's well, you'll ned up with a Docker image tagges as `horizon:mitaka`.
+Another slightly more advanced example would be:
 
-The convention follows for all other images:
-
-```shell
-$ rocker build -f common/Rockerfile --vars common/common.yaml \
-  --var EXPOSE="8774" --var TAG=nova:mitaka --var ROLE=nova .
 ```
+make nova BASE='ubuntu:14.04' UBUNTU_CODENAME='trusty' DATE="121216" RELEASE="liberty" DOMAIN="vagrant.test"
+```
+
+This will build a Nova image based off Ubuntu 14.04 configured for running in a Vagrant test environment.
+
+_NB_: The `RELEASE` option doesn't actually affect anything other than what the image is tagged as.
+
 
