@@ -7,6 +7,7 @@ keystone_admin_pw: 'WifrekicIpt6'
 keystone_glance_password: 'kiphMauHyft5'
 keystone_cinder_password: 'gleshat9Ots5'
 keystone_nova_password: 'bebUjecyawp5'
+keystone_neutron_password: '6OnVeetecpit'
 
 keystone_db_pass: 'AmjemejHuph8'
 glance_db_pass:  'DishrubChop2'
@@ -16,4 +17,10 @@ nova_api_db_pass: 'ClajDitBapt9'
 
 osdbmq_rabbitmq_pw: 'OjCurgIjurr4'
 
+neutron_admin_user:  'neutron'
+neutron_secret:      'dytKehalkev5'
 neutron_metadata_secret: 'Cydrug4OjAlm'
+neutron_db:          'neutron'
+neutron_db_user:     'neutron'
+neutron_db_pass:     'alNanJetOcs6'
+neutron_api_port:    '9696'

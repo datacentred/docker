@@ -1,0 +1,3 @@
+---
+neutron::rabbit_hosts:
+ - osdbmq0.%{::domain}
