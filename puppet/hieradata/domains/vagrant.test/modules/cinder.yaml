@@ -1,0 +1,8 @@
+---
+cinder::keystone::authtoken::region_name: 'vagrant'
+cinder::api::os_region_name: 'vagrant'
+
+cinder::rabbit_host: "osdbmq0.%{::domain}"
+
+cinder::rabbit_ha_queues: false
+cinder::api::service_workers: '2'

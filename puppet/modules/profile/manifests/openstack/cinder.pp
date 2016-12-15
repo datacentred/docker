@@ -1,3 +1,4 @@
+#
 # == Class: ::profile::openstack::cinder
 #
 # Configure OpenStack's block storage service for
@@ -20,7 +21,7 @@ class profile::openstack::cinder {
 
   $rbd_user        = 'cinder'
   $rbd_secret_uuid = '42991612-85dc-42e4-ae3c-49cf07e98b70'
-  
+
   cinder::backend::rbd { 'cinder.volumes':
     rbd_pool        => 'cinder.volumes',
     rbd_user        => $rbd_user,
@@ -31,7 +32,7 @@ class profile::openstack::cinder {
       },
     },
   }
-  
+
   cinder::backend::rbd { 'cinder.volumes.flash':
     rbd_pool        => 'cinder.volumes.flash',
     rbd_user        => $rbd_user,

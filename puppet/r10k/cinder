@@ -12,6 +12,7 @@ mod 'puppetlabs/apache'
 mod 'ajcrowe/supervisord'
 mod 'puppetlabs/concat', '1.2.5'
 mod 'puppetlabs/mysql'
+mod 'puppetlabs-dummy_service', '0.2.0'
 
 mod 'puppetlabs/inifile'
 
