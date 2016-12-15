@@ -7,7 +7,6 @@ glance::api::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000"
 glance::api::authtoken::user_domain_name: 'default'
 glance::api::authtoken::project_domain_name: 'default'
 glance::api::authtoken::project_name: 'services'
-glance::registry::authtoken::region_name: 'sal01'
 
 glance::api::registry_host: "%{hiera('os_api_host')}"
 glance::api::registry_client_protocol:  'https'
@@ -16,16 +15,10 @@ glance::api::use_syslog: false
 glance::api::show_image_direct_url: true
 glance::api::manage_service: false
 glance::api::enabled: false
-glance::api::known_stores:
-    - rbd
-    - http
-    - file
-glance::api::default_store: 'rbd'
 glance::api::debug: false
 glance::api::use_stderr: true
 glance::api::log_dir: "%{::os_service_default}"
 glance::api::log_file: "%{::os_service_default}"
-glance::api::workers: '8'
 
 glance::registry::authtoken::username: 'glance'
 glance::registry::authtoken::password: "%{hiera('keystone_glance_password')}"
@@ -35,7 +28,6 @@ glance::registry::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000"
 glance::registry::authtoken::user_domain_name: 'default'
 glance::registry::authtoken::project_domain_name: 'default'
 glance::registry::authtoken::project_name: 'services'
-glance::registry::authtoken::region_name: 'sal01'
 
 glance::registry::database_connection: "mysql://%{hiera('glance_db_user')}:%{hiera('glance_db_pass')}@%{hiera('os_api_host')}:3306/%{hiera('glance_db')}"
 glance::registry::use_syslog: false
@@ -45,8 +37,8 @@ glance::registry::debug: false
 glance::registry::use_stderr: true
 glance::registry::log_dir: "%{::os_service_default}"
 glance::registry::log_file: "%{::os_service_default}"
-glance::registry::workers: '8'
 
+glance::api::sync_db: false
 glance::registry::sync_db: false
 
 glance::backend::rbd::rbd_store_ceph_conf: '/etc/ceph/ceph.conf'
@@ -54,10 +46,6 @@ glance::backend::rbd::rbd_store_user: 'glance'
 glance::backend::rbd::rbd_store_pool: 'glance'
 glance::backend::rbd::package_ensure: 'present'
 
-glance::notify::rabbitmq::rabbit_hosts:
- - osdbmq0.%{::domain}
- - osdbmq1.%{::domain}
- - osdbmq2.%{::domain}
 glance::notify::rabbitmq::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
 glance::notify::rabbitmq::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
 glance::notify::rabbitmq::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"

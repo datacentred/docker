@@ -1,0 +1,13 @@
+---
+glance::api::known_stores:
+    - rbd
+    - http
+    - file
+glance::api::default_store: 'rbd'
+glance::api::workers: '8'
+glance::registry::authtoken::region_name: 'sal01'
+
+glance::notify::rabbitmq::rabbit_hosts:
+ - osdbmq0.%{::domain}
+ - osdbmq1.%{::domain}
+ - osdbmq2.%{::domain}
