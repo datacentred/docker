@@ -1,0 +1,9 @@
+---
+glance::api::known_stores:
+    - http
+    - file
+glance::api::default_store: 'file'
+glance::api::workers: '2'
+glance::registry::authtoken::region_name: 'vagrant'
+
+glance::notify::rabbitmq::rabbit_host: osdbmq0.%{::domain}

@@ -1,3 +1,4 @@
+#
 # == Class: profile::openstack::glance
 #
 class profile::openstack::glance {
