@@ -1,6 +1,7 @@
 ---
 classes:
   - '::apt'
+  - '::dummy_service'
   - '::supervisord'
   - '::profile::util::prompt'
 

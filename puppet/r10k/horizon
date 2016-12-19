@@ -2,19 +2,17 @@ forge 'https://forgeapi.puppetlabs.com'
 
 mod 'puppetlabs-stdlib',
     :git => "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-
 mod 'puppetlabs/ntp',
     :git => "https://github.com/puppetlabs/puppetlabs-ntp.git"
-
-mod 'datacentred/branding',
-    :git => "https://dc_jenkins:27485be45693278ac9be41d4540c8ac4f1adc6b7@github.com/datacentred/branding.git",
-    :branch => "mitaka-location-fix"
-
-mod 'markhellewell/aptcacherng'
 mod 'puppetlabs/apt'
 mod 'puppetlabs/apache'
 mod 'ajcrowe/supervisord'
 mod 'puppetlabs/concat', '1.2.5'
+mod 'puppetlabs-dummy_service', '0.2.0'
+
+mod 'datacentred/branding',
+    :git => "https://dc_jenkins:27485be45693278ac9be41d4540c8ac4f1adc6b7@github.com/datacentred/branding.git",
+    :branch => "mitaka-location-fix"
 
 mod 'openstack/horizon',
     :git    => "https://github.com/datacentred/puppet-horizon.git",
