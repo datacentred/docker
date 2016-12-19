@@ -11,3 +11,5 @@ service:
     'stderr_logfile_maxbytes': '0'
 
 keystone_db_user: 'keystone'
+
+apache::mpm_module: 'event'
