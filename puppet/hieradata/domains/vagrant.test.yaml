@@ -14,6 +14,6 @@ cinder_db_pass:  'nequekOberl1'
 nova_db_pass: 'NuIthkobyad9'
 nova_api_db_pass: 'ClajDitBapt9'
 
-osdbmq_rabbitmq_pw: 'geOfsyostUz3'
+osdbmq_rabbitmq_pw: 'OjCurgIjurr4'
 
 neutron_metadata_secret: 'Cydrug4OjAlm'

@@ -6,21 +6,15 @@ cinder::keystone::authtoken::auth_url: "https://%{hiera('os_api_host')}:35357/"
 cinder::keystone::authtoken::project_name: 'services'
 cinder::keystone::authtoken::user_domain_name: 'default'
 cinder::keystone::authtoken::project_domain_name: 'default'
-cinder::keystone::authtoken::region_name: 'sal01'
 
 cinder::database_connection: "mysql://%{hiera('cinder_db_user')}:%{hiera('cinder_db_pass')}@%{hiera('os_api_host')}/%{hiera('cinder_db')}?charset=utf8"
 cinder::control_exchange: 'cinder'
 cinder::rpc_backend: 'rabbit'
 
-cinder::rabbit_hosts:
- - osdbmq0.%{::domain}
- - osdbmq1.%{::domain}
- - osdbmq2.%{::domain}
 cinder::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
 cinder::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
 cinder::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
 cinder::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
-cinder::rabbit_ha_queues: true
 
 cinder::host: "%{hiera('os_api_host')}"
 cinder::enable_v1_api: false
@@ -33,8 +27,6 @@ cinder::log_file: "%{::os_service_default}"
 cinder::storage_availability_zone: 'Production'
 cinder::default_availability_zone: 'Production'
 
-cinder::api::service_workers: '8'
-cinder::api::os_region_name: 'sal01'
 cinder::api::default_volume_type: 'Ceph'
 cinder::api::nova_catalog_info: 'compute:nova:publicURL'
 cinder::api::nova_catalog_admin_info: 'compute:nova:adminURL'
