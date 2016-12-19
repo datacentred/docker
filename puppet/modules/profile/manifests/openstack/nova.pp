@@ -4,7 +4,6 @@
 class profile::openstack::nova {
   include ::nova
   include ::nova::api
-  include ::nova::keystone::authtoken
   include ::nova::network::neutron
   include ::nova::cert
   include ::nova::conductor
