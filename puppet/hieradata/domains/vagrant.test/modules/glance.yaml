@@ -4,6 +4,9 @@ glance::api::known_stores:
     - file
 glance::api::default_store: 'file'
 glance::api::workers: '2'
+glance::api::os_region_name: 'vagrant'
 glance::registry::authtoken::region_name: 'vagrant'
+
+glance::backend::rbd::multi_store: true
 
 glance::notify::rabbitmq::rabbit_host: osdbmq0.%{::domain}
