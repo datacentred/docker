@@ -15,20 +15,12 @@ keystone::database_connection: "mysql://%{hiera('keystone_db_user')}:%{hiera('ke
 keystone::validate_auth_url: "http://127.0.0.1:35357/"
 keystone::validate_service: false
 keystone::sync_db: false
-keystone::rabbit_hosts:
- - "osdbmq0.%{::domain}"
- - "osdbmq1.%{::domain}"
- - "osdbmq2.%{::domain}"
 keystone::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
 keystone::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
 keystone::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
 keystone::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
 keystone::token_driver: 'memcache'
 keystone::cache_backend: 'keystone.cache.memcache_pool'
-keystone::memcache_servers:
- - "osdbmq0.%{::domain}"
- - "osdbmq1.%{::domain}"
- - "osdbmq2.%{::domain}"
 keystone::public_endpoint: "https://%{hiera('os_api_host')}:5000"
 keystone::admin_endpoint: "https://%{hiera('os_api_host')}:35357"
 keystone::service_name: 'httpd'
@@ -37,9 +29,6 @@ keystone::roles::admin::password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAx
 keystone::roles::admin::service_tenant: "services"
 keystone::wsgi::apache::ssl: false
 keystone::wsgi::apache::servername: "%{::fqdn}"
-keystone::wsgi::apache::workers: '4'
-keystone::wsgi::apache::threads: '2'
 keystone::endpoint::public_url: "https://%{hiera('os_api_host')}:5000"
 keystone::endpoint::internal_url: "https://%{hiera('os_api_host')}:5000"
 keystone::endpoint::admin_url: "https://%{hiera('os_api_host')}:35357"
-keystone::endpoint::region: 'sal01'
