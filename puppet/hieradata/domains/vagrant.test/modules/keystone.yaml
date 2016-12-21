@@ -1,0 +1,10 @@
+---
+keystone::rabbit_host: "osdbmq0.%{::domain}"
+
+keystone::memcache_servers:
+  - "osdbmq0.%{::domain}"
+
+keystone::wsgi::apache::workers: '2'
+keystone::wsgi::apache::threads: '1'
+
+keystone::endpoint::region: 'vagrant'
