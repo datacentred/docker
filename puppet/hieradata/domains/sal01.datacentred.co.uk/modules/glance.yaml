@@ -1,10 +1,14 @@
 ---
+classes:
+  - '::glance::backend::rbd'
+
 glance::api::known_stores:
     - rbd
     - http
     - file
 glance::api::default_store: 'rbd'
-glance::api::workers: '8'
+glance::api::workers: '4'
+glance::api::os_region_name: 'sal01'
 glance::registry::authtoken::region_name: 'sal01'
 
 glance::notify::rabbitmq::rabbit_hosts:
