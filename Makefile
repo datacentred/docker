@@ -47,5 +47,4 @@ horizon:
 		docker tag $@:$(RELEASE)-$(VCSREF) $(REGISTRY)/$@:$(RELEASE)-$(VCSREF)
 
 clean:
-		docker rmi $$(docker images -f "dangling=true" -q)
-		docker rm -v $$(docker ps -a -q -f status=exited)
+		yes | docker image prune

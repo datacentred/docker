@@ -23,11 +23,12 @@ RUN {{ .RUN.puppet_apply }}
 CMD {{ .CMD }}
 
 EXPOSE {{ .EXPOSE }}
-TAG {{ .TAG }}
 
-LABEL org.label-schema.build-date={{ .Env.DATE }}
-LABEL org.label-schema.name={{ .Env.NAME }}
-LABEL org.label-schema.vcs-ref={{ .Env.VCSREF }}
-LABEL org.label-schema.vcs-url="https://github.com/datacentred/docker"
+LABEL org.label-schema.build-date={{ .Env.DATE }} \
+      org.label-schema.name={{ .Env.NAME }} \
+      org.label-schema.vcs-ref={{ .Env.VCSREF }} \
+      org.label-schema.vcs-url="https://github.com/datacentred/docker"
+
+TAG {{ .TAG }}
 
 # vim:ts=4:sw=4:et:ft=Dockerfile
