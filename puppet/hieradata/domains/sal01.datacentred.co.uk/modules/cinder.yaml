@@ -8,4 +8,4 @@ cinder::rabbit_hosts:
  - osdbmq2.%{::domain}
 
 cinder::rabbit_ha_queues: true
-cinder::api::service_workers: '8'
+cinder::api::service_workers: '4'
