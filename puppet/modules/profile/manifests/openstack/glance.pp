@@ -13,4 +13,18 @@ class profile::openstack::glance {
 
   Class[::ceph] -> Class['::glance::backend::rbd']
 
+  # TODO: Remove this hack once packages for Ceph 10.2.4 are
+  # available - see https://bugs.launchpad.net/ubuntu/+source/ceph/+bug/1625489
+  #
+  package { 'python-glance-store':
+    ensure => 'present',
+  } ->
+  file { 'rbd.py':
+    path   => '/usr/lib/python2.7/dist-packages/glance_store/_drivers/rbd.py',
+    source => 'puppet:///modules/dc_openstack/rbd.py',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+  }
+
 }

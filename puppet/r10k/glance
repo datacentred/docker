@@ -26,3 +26,6 @@ mod 'openstack/keystone',
     :branch => "master"
 
 mod 'spjmurray/ceph', '1.5.1'
+
+mod 'datacentred/dc_openstack',
+    :git => "https://github.com/datacentred/dc_openstack"
