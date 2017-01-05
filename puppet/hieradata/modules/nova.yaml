@@ -19,6 +19,7 @@ nova::nova_private_key:
 nova::use_syslog: true
 nova::log_dir: "%{::os_service_default}"
 nova::upgrade_level_compute: 'kilo'
+nova::upgrade_level_conductor: 'kilo'
 
 nova::keystone::authtoken::username: 'nova'
 nova::keystone::authtoken::password: "%{hiera('keystone_nova_password')}"
@@ -35,6 +36,11 @@ nova::api::sync_db_api: false
 nova::api::enable_instance_password: true
 nova::api::neutron_metadata_proxy_shared_secret: "%{hiera('neutron_metadata_secret')}"
 nova::api::default_floating_pool: 'external'
+nova::api::identity_uri: "https://%{hiera('os_api_host')}:35357/"
+nova::api::auth_uri: "https://%{hiera('os_api_host')}:5000/"
+nova::api::admin_tenant_name: 'services'
+nova::api::admin_user: 'nova'
+nova::api::admin_password: "%{hiera('keystone_nova_password')}"
 
 nova::network::neutron::neutron_url: "https://%{hiera('os_api_host')}:9696"
 nova::network::neutron::neutron_admin_username: 'neutron'
@@ -76,6 +82,5 @@ nova::scheduler::filter::isolated_images:
 nova::config::nova_config:
   serial_console/enabled:
     value: false
-nova::config::nova_config:
   DEFAULT/resume_guests_state_on_host_boot:
     value: true

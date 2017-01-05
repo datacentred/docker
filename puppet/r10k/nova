@@ -10,6 +10,7 @@ mod 'puppetlabs/concat', '1.2.5'
 mod 'puppetlabs-inifile'
 mod 'puppetlabs-dummy_service', '0.2.0'
 mod 'puppetlabs-mysql'
+mod 'puppetlabs-dummy_service', '0.2.0'
 
 mod 'openstack/glance',
     :git    => "https://github.com/openstack/puppet-glance"
@@ -27,4 +28,5 @@ mod 'openstack/cinder',
     :git    => "https://github.com/openstack/puppet-cinder"
 
 mod 'openstack/nova',
-    :git => "https://github.com/openstack/puppet-nova.git"
+    :git => "https://github.com/openstack/puppet-nova",
+    :branch => "stable/mitaka"
