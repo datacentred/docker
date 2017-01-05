@@ -1,0 +1,34 @@
+forge 'https://forgeapi.puppetlabs.com'
+
+mod 'puppetlabs-stdlib',
+    :git => "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+mod 'puppetlabs/ntp',
+    :git => "https://github.com/puppetlabs/puppetlabs-ntp.git"
+mod 'ajcrowe/supervisord'
+mod 'puppetlabs/apt'
+mod 'puppetlabs/concat', '1.2.5'
+mod 'puppetlabs-inifile'
+mod 'puppetlabs-mysql'
+mod 'puppetlabs-dummy_service', '0.2.0'
+
+mod 'openstack/glance',
+    :git    => "https://github.com/openstack/puppet-glance"
+
+mod 'openstack/openstacklib',
+    :git    => "https://github.com/openstack/puppet-openstacklib"
+
+mod 'openstack/oslo',
+    :git    => "https://github.com/openstack/puppet-oslo"
+
+mod 'openstack/keystone',
+    :git    => "https://github.com/openstack/puppet-keystone"
+
+mod 'openstack/cinder',
+    :git    => "https://github.com/openstack/puppet-cinder"
+
+mod 'openstack/nova',
+    :git    => "https://github.com/openstack/puppet-nova",
+    :branch => "stable/mitaka"
+
+mod 'openstack/neutron',
+    :git    => "https://github.com/openstack/puppet-neutron"
