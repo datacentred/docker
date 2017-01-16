@@ -1,0 +1,20 @@
+---
+classes:
+  - '::profile::openstack::heat'
+
+service:
+  'heat-engine':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
+    'command': '/usr/bin/heat-engine'
+  'heat-api':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
+    'command': '/usr/bin/heat-api'
+
+heat_db: 'heat'
+heat_db_user: 'heat'

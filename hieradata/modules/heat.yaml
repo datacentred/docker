@@ -1,0 +1,59 @@
+---
+heat::keystone::authtoken::username: 'heat' # default
+heat::keystone::authtoken::password: "%{hiera('keystone_heat_password')}"
+heat::keystone::authtoken::auth_url: "https://%{hiera('os_api_host')}:35357"
+heat::keystone::authtoken::project_name: 'services' # default
+heat::keystone::authtoken::user_domain_name: 'Default' # default
+heat::keystone::authtoken::project_domain_name: 'Default' # default
+heat::keystone::authtoken::auth_type: 'password'
+heat::keystone::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000"
+heat::keystone::authtoken::auth_version: '3'
+# Install python-memcache
+heat::keystone::authtoken::manage_memcache_package: true
+heat::keystone::authtoken::region_name: "%{hiera('os_region_name')}"
+
+heat::keystone::domain::domain_name: 'heat'
+heat::keystone::domain::domain_admin: 'heat_domain_admin'
+heat::keystone::domain::domain_password: "%{hiera('heat_domain_password')}"
+heat::keystone::domain::manage_domain: false
+heat::keystone::domain::manage_user: false
+heat::keystone::domain::manage_role: false
+
+heat::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
+heat::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
+heat::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
+heat::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
+
+heat::debug: false
+heat::use_syslog: false
+heat::use_stderr: true
+
+# EC2 endpoint - not tested
+heat::keystone_ec2_uri: "https://%{hiera('os_api_host')}:5000/v3/ec2tokens"
+
+heat::database_connection: "mysql://%{hiera('heat_db_user')}:%{hiera('heat_db_pass')}@%{hiera('os_api_host')}/%{hiera('heat_db')}"
+
+heat::sync_db: false
+heat::enable_stack_adopt: true
+heat::enable_stack_abandon: true
+
+heat::api::enabled: true # default
+heat::api::manage_service: false
+
+heat::api::api_cfn::enabled: false
+heat::api::api_cfn::package_ensure: absent
+
+heat::api-cloudwatch::enabled: false
+heat::api-cloudwatch::package_ensure: absent
+
+heat::engine::enabled: true
+heat::engine::manage_service: false
+heat::engine::heat_stack_user_role: 'heat_stack_user'
+heat::engine::heat_metadata_server_url: "https://%{hiera('os_api_host')}:8000"
+heat::engine::heat_waitcondition_server_url: "https://%{hiera('os_api_host')}:8000/v1/waitcondition"
+heat::engine::heat_watch_server_url: "https://%{hiera('os_api_host')}:8003"
+heat::engine::auth_encryption_key: "%{hiera('heat_engine_enc_key')}"
+heat::engine::deferred_auth_method: 'trusts'
+heat::engine::trusts_delegated_roles: ['heat_stack_owner']
+
+#TODO: Purging old entries using `heat::cron::purge_deleted`?

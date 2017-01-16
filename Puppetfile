@@ -51,6 +51,10 @@ mod 'openstack/ceilometer',
     :git    => "https://github.com/openstack/puppet-ceilometer",
     :branch => "master"
 
+mod 'openstack/heat',
+    :git    => "https://github.com/openstack/puppet-heat",
+    :tag    => "9.4.1"
+
 mod 'openstack/openstacklib',
     :git    => "https://github.com/openstack/puppet-openstacklib",
     :branch => "master"
