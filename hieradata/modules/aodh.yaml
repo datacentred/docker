@@ -1,0 +1,67 @@
+---
+aodh::keystone::authtoken::username: 'aodh' # default
+aodh::keystone::authtoken::password: "%{hiera('keystone_aodh_password')}"
+aodh::keystone::authtoken::auth_url: "https://%{hiera('os_api_host')}:35357"
+aodh::keystone::authtoken::project_name: 'services' # default
+aodh::keystone::authtoken::user_domain_name: 'Default' # default
+aodh::keystone::authtoken::project_domain_name: 'Default' # default
+aodh::keystone::authtoken::auth_type: 'password'
+aodh::keystone::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000"
+aodh::keystone::authtoken::auth_version: '3'
+# Install python-memcache
+aodh::keystone::authtoken::manage_memcache_package: true
+aodh::keystone::authtoken::memcached_servers:
+ - "osdbmq0.%{::domain}"
+ - "osdbmq1.%{::domain}"
+ - "osdbmq2.%{::domain}"
+aodh::keystone::authtoken::region_name: "%{hiera('os_region_name')}"
+
+# Credentials for the [service_credentials] section
+aodh::auth::auth_url: "https://%{hiera('os_api_host')}:5000/v3"
+aodh::auth::auth_region: "%{hiera('os_region_name')}"
+aodh::auth::auth_user: 'aodh' # default
+aodh::auth::auth_password: "%{hiera('keystone_aodh_password')}"
+aodh::auth::auth_tenant_name: 'services'
+aodh::auth::project_domain_id: 'default' # default
+aodh::auth::user_domain_id: 'default' # default
+aodh::auth::auth_type: 'password'
+
+aodh::api::enabled: true # default
+aodh::api::manage_service: false
+aodh::api::port: "%{hiera('aodh_port')}"
+aodh::api::service_name: 'httpd'
+aodh::api::sync_db: false
+aodh::api::auth_strategy: 'keystone # default'
+
+aodh::wsgi::apache::servername: "%{::fqdn}" # default
+aodh::wsgi::apache::port: "%{hiera('aodh_port')}"
+aodh::wsgi::apache::ssl: false
+aodh::wsgi::apache::workers: '2'
+aodh::wsgi::apache::threads: '1'
+aodh::wsgi::apache::priority: '10' # default
+
+# Replaces ceilometer's alarm_history_time_to_live
+aodh::alarm_history_time_to_live: '86401'
+aodh::rpc_backend: 'rabbit' # default
+aodh::rabbit_hosts:
+ - "osdbmq0.%{::domain}"
+ - "osdbmq1.%{::domain}"
+ - "osdbmq2.%{::domain}"
+aodh::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
+aodh::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
+aodh::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
+aodh::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
+aodh::debug: false
+aodh::verbose: false
+aodh::use_syslog: false
+aodh::use_stderr: true
+aodh::log_dir: "%{::os_service_default}"
+aodh::log_file: "%{::os_service_default}"
+aodh::database_connection: "mysql://%{hiera('aodh_db_user')}:%{hiera('aodh_db_pass')}@%{hiera('os_api_host')}/%{hiera('aodh_db')}"
+
+# The below seems to be broken now as it tries to write to the file before
+# installing Aodh. Fortunately, the required parameter is in the default file.
+# TODO: Test this on a branch newer than Newton.
+#aodh::config::aodh_api_paste_ini:
+#  filter:authtoken/oslo_config_project:
+#    value: 'aodh'
