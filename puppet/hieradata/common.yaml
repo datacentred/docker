@@ -4,7 +4,6 @@ classes:
   - '::dummy_service'
   - '::supervisord'
   - '::profile::util::prompt'
-  - '::dummy_service'
 
 os_api_host: 'compute.datacentred.io'
 

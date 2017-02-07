@@ -6,8 +6,9 @@ VCSREF=$(shell git rev-parse --short HEAD)
 DATE=$(shell date --rfc-3339=date)
 REGISTRY=registry.datacentred.services:5000
 
-all:	keystone glance cinder horizon nova
-.PHONY: all keystone glance cinder horizon nova clean
+openstack:	keystone glance cinder nova neutron horizon
+all:		keystone glance cinder nova neutron horizon jenkins
+.PHONY: 	all keystone glance cinder nova neutron horizon jenkins clean
 
 keystone:
 		NAME=$@ DATE=$(DATE) VCSREF=$(VCSREF) \
@@ -45,6 +46,12 @@ horizon:
 		rocker build --no-cache -f common/Rockerfile --vars common/common.yaml --var EXPOSE="80" \
 		--var DOCKER_BUILD_DOMAIN=$(DOMAIN) --var TAG=$@:$(RELEASE)-$(VCSREF) --var ROLE=$@ .
 		docker tag $@:$(RELEASE)-$(VCSREF) $(REGISTRY)/$@:$(RELEASE)-$(VCSREF)
+
+jenkins:
+		NAME=$@ DATE=$(DATE) VCSREF=$(VCSREF) \
+		rocker build --no-cache -f common/Rockerfile --vars common/common.yaml --var EXPOSE="22" \
+		--var DOCKER_BUILD_DOMAIN=$(DOMAIN) --var TAG=$@:$(VCSREF) --var ROLE=$@ .
+		docker tag $@:$(VCSREF) $(REGISTRY)/$@:$(VCSREF)
 
 clean:
 		yes | docker image prune

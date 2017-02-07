@@ -1,0 +1,13 @@
+forge 'https://forgeapi.puppetlabs.com'
+
+mod 'puppetlabs-stdlib',
+    :git => "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+mod 'puppetlabs/ntp',
+    :git => "https://github.com/puppetlabs/puppetlabs-ntp.git"
+mod 'ajcrowe/supervisord'
+mod 'puppetlabs/apt'
+mod 'puppetlabs/concat', '1.2.5'
+mod 'puppetlabs-inifile'
+mod 'garethr-docker', '5.3.0'
+mod 'puppetlabs-dummy_service', '0.2.0'
+mod 'maestrodev-wget', '1.7.3'
