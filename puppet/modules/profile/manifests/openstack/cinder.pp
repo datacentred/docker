@@ -13,7 +13,6 @@ class profile::openstack::cinder {
   include ::cinder::glance
   include ::cinder::quota
   include ::cinder::volume
-  include ::cinder::volume::rbd
   include ::cinder::backends
   include ::cinder::ceilometer
   include ::cinder::config
