@@ -28,6 +28,13 @@ nova::keystone::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000/"
 nova::keystone::authtoken::project_name: 'services'
 nova::keystone::authtoken::user_domain_name: 'default'
 nova::keystone::authtoken::project_domain_name: 'default'
+nova::keystone::authtoken::auth_type: 'password'
+nova::keystone::authtoken::manage_memcache_package: 'true'
+nova::keystone::authtoken::memcached_servers:
+ - "osdbmq0.%{::domain}"
+ - "osdbmq1.%{::domain}"
+ - "osdbmq2.%{::domain}"
+nova::keystone::authtoken::region_name: "%{hiera('os_region_name')}"
 
 nova::api::manage_service: false
 nova::api::use_forwarded_for: true
