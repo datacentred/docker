@@ -27,4 +27,27 @@ class profile::openstack::glance {
     mode   => '0644',
   }
 
+  file { '/usr/local/etc/glance/':
+    ensure => directory,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+  }
+
+  file { 'property_pr_rules':
+    path   => '/usr/local/etc/glance/property_pr_rules',
+    source => 'puppet:///modules/dc_openstack/property_pr_rules',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+  }
+
+  glance_api_config { 'DEFAULT/property_protection_file' :
+    value => '/usr/local/etc/glance/property_pr_rules',
+  }
+
+  glance_api_config { 'DEFAULT/property_protection_rule_format' :
+    value => 'roles',
+  }
+
 }
