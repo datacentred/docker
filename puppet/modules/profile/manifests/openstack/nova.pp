@@ -12,10 +12,6 @@ class profile::openstack::nova {
   include ::nova::scheduler::filter
   include ::nova::vncproxy
 
-  nova_config { 'DEFAULT/restrict_isolated_hosts_to_isolated_images':
-    value => true,
-  }
-
   package { 'iptables':
     ensure => present,
   }->
