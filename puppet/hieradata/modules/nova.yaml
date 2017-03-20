@@ -30,10 +30,6 @@ nova::keystone::authtoken::user_domain_name: 'default'
 nova::keystone::authtoken::project_domain_name: 'default'
 nova::keystone::authtoken::auth_type: 'password'
 nova::keystone::authtoken::manage_memcache_package: 'true'
-nova::keystone::authtoken::memcached_servers:
- - "osdbmq0.%{::domain}"
- - "osdbmq1.%{::domain}"
- - "osdbmq2.%{::domain}"
 nova::keystone::authtoken::region_name: "%{hiera('os_region_name')}"
 
 nova::api::manage_service: false
@@ -43,16 +39,11 @@ nova::api::sync_db_api: false
 nova::api::enable_instance_password: true
 nova::api::neutron_metadata_proxy_shared_secret: "%{hiera('neutron_metadata_secret')}"
 nova::api::default_floating_pool: 'external'
-nova::api::identity_uri: "https://%{hiera('os_api_host')}:35357/"
-nova::api::auth_uri: "https://%{hiera('os_api_host')}:5000/"
-nova::api::admin_tenant_name: 'services'
-nova::api::admin_user: 'nova'
-nova::api::admin_password: "%{hiera('keystone_nova_password')}"
 
 nova::network::neutron::neutron_url: "https://%{hiera('os_api_host')}:9696"
-nova::network::neutron::neutron_admin_username: 'neutron'
-nova::network::neutron::neutron_admin_password: "%{hiera('keystone_neutron_password')}"
-nova::network::neutron::neutron_admin_auth_url: "https://%{hiera('os_api_host')}:35357/v3"
+nova::network::neutron::neutron_username: 'neutron'
+nova::network::neutron::neutron_password: "%{hiera('keystone_neutron_password')}"
+nova::network::neutron::neutron_auth_url: "https://%{hiera('os_api_host')}:35357/v3"
 nova::network::neutron::neutron_region_name: "%{hiera('os_region')}"
 nova::network::neutron::vif_plugging_is_fatal: false
 nova::network::neutron::vif_plugging_timeout: '0'
@@ -63,28 +54,23 @@ nova::conductor::enabled: true
 nova::consoleauth::enabled: true
 nova::scheduler::enabled: true
 
+nova::scheduler::scheduler_driver: 'nova.scheduler.filter_scheduler.FilterScheduler'
+nova::scheduler::filter::scheduler_host_manager: 'nova.scheduler.host_manager.HostManager'
+nova::scheduler::filter::scheduler_default_filters:
+  - AggregateInstanceExtraSpecsFilter
+  - AggregateImagePropertiesIsolation
+  - AggregateMultiTenancyIsolation
+  - RetryFilter
+  - AvailabilityZoneFilter
+  - RamFilter
+  - ComputeFilter
+  - ImagePropertiesFilter
+  - ServerGroupAntiAffinityFilter
+  - ServerGroupAffinityFilter
+  - IsolatedHostsFilter
+
 nova::vncproxy::common::vncproxy_host: "%{hiera('os_api_host')}"
 nova::vncproxy::common::vncproxy_protocol: 'https'
-
-nova::scheduler::filter::scheduler_default_filters:
- - AggregateInstanceExtraSpecsFilter
- - AggregateImagePropertiesIsolation
- - AggregateMultiTenancyIsolation
- - RetryFilter
- - AvailabilityZoneFilter
- - RamFilter
- - ComputeFilter
- - ImagePropertiesFilter
- - ServerGroupAntiAffinityFilter
- - ServerGroupAffinityFilter
- - IsolatedHostsFilter
-nova::scheduler::filter::ram_allocation_ratio: '0.9'
-nova::scheduler::filter::cpu_allocation_ratio: '8.0'
-
-nova::scheduler::filter::isolated_hosts:
-  - 'absorb'
-nova::scheduler::filter::isolated_images:
-  - '07a93cc5-b3f1-499b-a7f2-ab420526ae1f'
 
 nova::config::nova_config:
   serial_console/enabled:
