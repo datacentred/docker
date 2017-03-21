@@ -12,6 +12,13 @@ class profile::openstack::nova {
   include ::nova::scheduler::filter
   include ::nova::vncproxy
 
+  nova_config {
+    'keystone_authtoken/auth_plugin':       value => 'password';
+    'keystone_authtoken/admin_user':        value => 'nova';
+    'keystone_authtoken/admin_tenant_name': value => 'services';
+    'keystone_authtoken/admin_password':    value => hiera('keystone_nova_password');
+  }
+
   package { 'iptables':
     ensure => present,
   }->
