@@ -41,6 +41,7 @@ nova::api::neutron_metadata_proxy_shared_secret: "%{hiera('neutron_metadata_secr
 nova::api::default_floating_pool: 'external'
 
 nova::network::neutron::neutron_url: "https://%{hiera('os_api_host')}:9696"
+nova::network::neutron::neutron_auth_plugin: 'password'
 nova::network::neutron::neutron_username: 'neutron'
 nova::network::neutron::neutron_password: "%{hiera('keystone_neutron_password')}"
 nova::network::neutron::neutron_auth_url: "https://%{hiera('os_api_host')}:35357/v3"
@@ -48,6 +49,8 @@ nova::network::neutron::neutron_region_name: "%{hiera('os_region')}"
 nova::network::neutron::vif_plugging_is_fatal: false
 nova::network::neutron::vif_plugging_timeout: '0'
 nova::network::neutron::firewall_driver: 'nova.virt.firewall.NoopFirewallDriver'
+nova::network::neutron::network_api_class: 'nova.network.neutronv2.api.API'
+nova::network::neutron::security_group_api: 'neutron'
 
 nova::cert::enabled: true
 nova::conductor::enabled: true
