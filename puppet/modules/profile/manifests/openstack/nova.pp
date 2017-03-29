@@ -26,10 +26,6 @@ class profile::openstack::nova {
     'neutron/admin_tenant_name':            value => 'services';
     'neutron/admin_password':               value => hiera('keystone_neutron_password');
     'neutron/identity_uri':                 value => "https://${hiera('os_api_host')}:35357";
-    'neutron/url':                          value => "https://${hiera('os_api_host')}:9696";
-    'neutron/auth_url':                     value => "https://${hiera('os_api_host')}:35357";
-    'neutron/username':                     value => 'neutron';
-    'neutron/password':                     value => hiera('keystone_neutron_password');
   }
 
   package { 'iptables':
