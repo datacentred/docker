@@ -8,7 +8,7 @@ service:
     'stderr_logfile': '/dev/stderr'
     'stdout_logfile_maxbytes': '0'
     'stderr_logfile_maxbytes': '0'
-    'command': '/usr/bin/neutron-server'
+    'command': '/usr/bin/neutron-server --config-file /etc/neutron/neutron.conf  --config-file /etc/neutron/plugins/ml2/ml2_conf.ini'
 
 neutron_db: 'neutron'
 neutron_db_user: 'neutron'

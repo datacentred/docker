@@ -11,7 +11,6 @@ neutron::service_plugins:
  - 'router'
  - 'firewall'
  - 'lbaas'
- - 'vpnaas'
  - 'metering'
 neutron::verbose: true
 neutron::use_syslog: true
@@ -45,12 +44,21 @@ neutron::plugins::ml2::tunnel_id_ranges:
  - '1:65536'
 
 neutron::server::notifications::nova_url: "https://%{hiera('os_api_host')}:8774/v2"
-neutron::server::notifications::nova_admin_auth_url: "https://%{hiera('os_api_host')}:35357/v2.0"
-neutron::server::notifications::nova_admin_username: 'nova'
-neutron::server::notifications::nova_admin_password: "%{hiera('keystone_nova_password')}"
-neutron::server::notifications::nova_region_name: "%{hiera('os_region')}"
-neutron::server::notifications::nova_admin_tenant_id: ENC[PKCS7,MIIBmQYJKoZIhvcNAQcDoIIBijCCAYYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAu/s+xqeB+Ij9nX//2kcCA78vtA+ABaknfVCn1Vy3fHoNkGSuveQW6UFGadOEd4xr4nwkg0cUrtHfAjlQMxNQ+4n0xKk1hRDtKPyjLv8Z3ApPNPd7Sa/HnOJNW671KAZIpBIyvr+fsoHVlul7ltii2txG+SzB6VwatN9k2Vtlptz1+N/j7Sc1Jo0IQihOqAYThbkNyof7MqOwWU8Q+Sht8KO6E1xtLZezfvP1LO5giFKPzyT91L5Ssu6xzC7bn6+j8QPhbX4EljMqb8lrOnuQsrtkXG7X/rGEY7pX2PDOKgl/3YvE4WLfqJtfLYPkqKIpcI7tI8D3m2WxLlc9O7+zWDBcBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDVJOf0UA0FD4I+rT398D5ggDAenHlqBUwb2bCApH0zWvqmTjQXzcpllMvj1G5SL8zRW/ezTaseP5Ij2Oy9v0Xpcy4=]
+neutron::server::notifications::auth_url: "https://%{hiera('os_api_host')}:35357/"
+neutron::server::notifications::username: 'nova'
+neutron::server::notifications::password: "%{hiera('keystone_nova_password')}"
+neutron::server::notifications::region_name: "%{hiera('os_region_name')}"
+neutron::server::notifications::auth_type: 'password'
+neutron::server::notifications::tenant_name: 'services'
+neutron::server::notifications::project_domain_id: ''
+neutron::server::notifications::user_domain_id: ''
+neutron::server::notifications::nova_admin_auth_url: "https://%{hiera('os_api_host')}:5000/v2.0"
+neutron::server::notifications::nova_admin_username: "%{hiera('keystone_nova_password')}"
 neutron::server::notifications::nova_admin_tenant_name: 'services'
+neutron::server::notifications::nova_admin_password: "%{hiera('keystone_nova_password')}"
+neutron::server::notifications::nova_region_name: "%{hiera('os_region_name')}"
+neutron::server::notifications::auth_plugin: 'password'
+
 neutron::server::allow_automatic_l3agent_failover: true
 neutron::server::max_l3_agents_per_router: '2'
 neutron::server::min_l3_agents_per_router: '2'
@@ -59,16 +67,15 @@ neutron::server::l3_ha: true
 neutron::agents::metadata::shared_secret: "%{hiera('neutron_metadata_secret')}"
 neutron::agents::metadata::auth_url: "https://%{hiera('os_api_host')}:35357/v2.0"
 neutron::agents::metadata::auth_password: "%{hiera('keystone_neutron_password')}"
-neutron::agents::metadata::auth_region: "%{hiera('os_region')}"
+neutron::agents::metadata::auth_region: "%{hiera('os_region_name')}"
 neutron::agents::metadata::metadata_ip: "%{hiera('os_api_vip')}"
 
 neutron::agents::dhcp::enabled: true
 neutron::agents::dhcp::dhcp_delete_namespaces: true
 neutron::agents::dhcp::dhcp_domain: 'datacentred.io'
 
-neutron::agents::l3::package_ensure: 'absent'
 neutron::agents::l3::manage_service: false
-neutron::agents::l3::enabled: false
+neutron::agents::l3::enabled: true
 neutron::agents::l3::router_delete_namespaces: true
 neutron::agents::l3::interface_driver: 'neutron.agent.linux.interface.OVSInterfaceDriver'
 neutron::agents::l3::ha_enabled: true
@@ -76,7 +83,7 @@ neutron::agents::l3::ha_vrrp_auth_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBaj
 neutron::agents::l3::external_network_bridge: ''
 neutron::agents::l3::gateway_external_network_id: ''
 
-neutron::agents::vpnaas::enabled: true
+neutron::agents::vpnaas::enabled: false
 neutron::agents::lbaas::enabled: true
 neutron::agents::metering::enabled: true
 

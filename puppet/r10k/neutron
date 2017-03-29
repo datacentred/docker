@@ -31,4 +31,5 @@ mod 'openstack/nova',
     :branch => "stable/mitaka"
 
 mod 'openstack/neutron',
-    :git    => "https://github.com/openstack/puppet-neutron"
+    :git    => "https://github.com/openstack/puppet-neutron",
+    :branch => "stable/mitaka"
