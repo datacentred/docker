@@ -9,6 +9,6 @@ nova::keystone::authtoken::memcached_servers:
  - osdbmq1.%{::domain}
  - osdbmq2.%{::domain}
 
-nova::api::osapi_compute_workers: '8'
-nova::api::metadata_workers: '8'
+nova::api::osapi_compute_workers: '4'
+nova::api::metadata_workers: '4'
 
