@@ -38,4 +38,13 @@ class profile::openstack::nova {
     mode    => '0770',
   }
 
+  file { '/usr/lib/python2.7/dist-packages/nova/scheduler/filters/aggregate_image_properties_isolation_dc.py':
+    ensure  => present,
+    content => file('dc_openstack/aggregate_image_properties_isolation_dc.py'),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    require =>  Package['python-nova'],
+  }
+
 }

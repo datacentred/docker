@@ -30,3 +30,6 @@ mod 'openstack/cinder',
 mod 'openstack/nova',
     :git => "https://github.com/openstack/puppet-nova",
     :branch => "stable/newton"
+
+mod 'datacentred/dc_openstack',
+    :git => "https://github.com/datacentred/dc_openstack"
