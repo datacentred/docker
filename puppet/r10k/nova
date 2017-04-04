@@ -11,25 +11,11 @@ mod 'puppetlabs-inifile'
 mod 'puppetlabs-dummy_service', '0.2.0'
 mod 'puppetlabs-mysql'
 mod 'puppetlabs-dummy_service', '0.2.0'
-
-mod 'openstack/glance',
-    :git    => "https://github.com/openstack/puppet-glance"
-
-mod 'openstack/openstacklib',
-    :git    => "https://github.com/openstack/puppet-openstacklib"
-
-mod 'openstack/oslo',
-    :git    => "https://github.com/openstack/puppet-oslo"
-
-mod 'openstack/keystone',
-    :git    => "https://github.com/openstack/puppet-keystone"
-
-mod 'openstack/cinder',
-    :git    => "https://github.com/openstack/puppet-cinder"
-
-mod 'openstack/nova',
-    :git => "https://github.com/openstack/puppet-nova",
-    :branch => "stable/newton"
+mod 'openstack-nova', '8.0.1'
+mod 'openstack-keystone', '8.0.1'
+mod 'openstack-glance', '8.0.1'
+mod 'openstack-cinder', '8.0.1'
+mod 'openstack-openstacklib', '8.0.1'
 
 mod 'datacentred/dc_openstack',
     :git => "https://github.com/datacentred/dc_openstack"
