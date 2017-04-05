@@ -20,6 +20,7 @@ nova::use_syslog: true
 nova::log_dir: "%{::os_service_default}"
 nova::upgrade_level_compute: 'kilo'
 nova::upgrade_level_conductor: 'kilo'
+nova::upgrade_level_scheduler: 'kilo'
 
 nova::keystone::authtoken::username: 'nova'
 nova::keystone::authtoken::password: "%{hiera('keystone_nova_password')}"
@@ -41,18 +42,22 @@ nova::api::neutron_metadata_proxy_shared_secret: "%{hiera('neutron_metadata_secr
 nova::api::default_floating_pool: 'external'
 nova::api::secure_proxy_ssl_header: 'X-Forwarded-Proto'
 nova::api::compute_link_prefix: 'https://compute.datacentred.io:8774/'
+nova::api::admin_password: "%{hiera('keystone_nova_password')}"
+nova::api::auth_uri: "https://%{hiera('os_api_host')}:5000/"
+nova::api::identity_uri: "https://%{hiera('os_api_host')}:35357/"
 
 nova::network::neutron::neutron_url: "https://%{hiera('os_api_host')}:9696"
 nova::network::neutron::neutron_auth_plugin: 'password'
 nova::network::neutron::neutron_username: 'neutron'
 nova::network::neutron::neutron_password: "%{hiera('keystone_neutron_password')}"
 nova::network::neutron::neutron_auth_url: "https://%{hiera('os_api_host')}:35357/v3"
-nova::network::neutron::neutron_region_name: "%{hiera('os_region')}"
+nova::network::neutron::neutron_region_name: "%{hiera('os_region_name')}"
 nova::network::neutron::vif_plugging_is_fatal: false
 nova::network::neutron::vif_plugging_timeout: '0'
 nova::network::neutron::firewall_driver: 'nova.virt.firewall.NoopFirewallDriver'
 nova::network::neutron::network_api_class: 'nova.network.neutronv2.api.API'
 nova::network::neutron::security_group_api: 'neutron'
+nova::network::neutron::dhcp_domain: 'datacentred.io'
 
 nova::cert::enabled: true
 nova::conductor::enabled: true
@@ -73,6 +78,9 @@ nova::scheduler::filter::scheduler_default_filters:
   - ServerGroupAntiAffinityFilter
   - ServerGroupAffinityFilter
   - IsolatedHostsFilter
+nova::scheduler::filter::ram_allocation_ratio: 0.9
+nova::scheduler::filter::cpu_allocation_ratio: 8.0
+nova::scheduler::filter::scheduler_host_subset_size: '10'
 
 nova::vncproxy::common::vncproxy_host: "%{hiera('os_api_host')}"
 nova::vncproxy::common::vncproxy_protocol: 'https'
