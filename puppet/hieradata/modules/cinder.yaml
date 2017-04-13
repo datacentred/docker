@@ -38,6 +38,8 @@ cinder::scheduler::manage_service: false
 
 cinder::glance::glance_api_servers: "https://%{hiera('os_api_host')}:9292"
 
+cinder::volume::volume_clear: 'none'
+
 cinder::volume::rbd::rbd_pool: 'cinder.volumes'
 cinder::volume::rbd::rbd_user: 'cinder'
 cinder::volume::rbd::rbd_secret_uuid: '42991612-85dc-42e4-ae3c-49cf07e98b70'
