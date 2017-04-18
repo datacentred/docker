@@ -50,4 +50,72 @@ class profile::openstack::glance {
     value => 'roles',
   }
 
+  glance_api_paste_ini { 'pipeline:glance-api/pipeline' :
+    value => 'healthcheck cors versionnegotiation osprofiler unauthenticated-context rootapp',
+  }
+
+  glance_api_paste_ini { 'pipeline:glance-api-caching/pipeline' :
+    value => 'healthcheck cors versionnegotiation osprofiler unauthenticated-context cache rootapp',
+  }
+
+  glance_api_paste_ini { 'pipeline:glance-api-cachemanagement/pipeline' :
+    value => 'healthcheck cors versionnegotiation osprofiler unauthenticated-context cache cachemanage rootapp',
+  }
+
+  glance_api_paste_ini { 'pipeline:glance-api-keystone/pipeline' :
+    value => 'healthcheck cors versionnegotiation osprofiler authtoken context  rootapp',
+  }
+
+  glance_api_paste_ini { 'pipeline:glance-api-keystone+caching/pipeline' :
+    value => 'healthcheck cors versionnegotiation osprofiler authtoken context cache rootapp',
+  }
+
+  glance_api_paste_ini { 'pipeline:glance-api-keystone+cachemanagement/pipeline' :
+    value => 'healthcheck cors versionnegotiation osprofiler authtoken context cache cachemanage rootapp',
+  }
+
+  glance_api_paste_ini { 'pipeline:glance-api-trusted-auth/pipeline' :
+    value => 'healthcheck cors versionnegotiation osprofiler context rootapp',
+  }
+
+  glance_api_paste_ini { 'pipeline:glance-api-trusted-auth+cachemanagement/pipeline' :
+    value => 'healthcheck cors versionnegotiation osprofiler context cache cachemanage rootapp',
+  }
+
+  glance_api_paste_ini { 'filter:healthcheck/paste.filter_factory' :
+    value => 'oslo_middleware:Healthcheck.factory',
+  }
+
+  glance_api_paste_ini { 'filter:healthcheck/backends' :
+    value => 'disable_by_file',
+  }
+
+  glance_api_paste_ini { 'filter:healthcheck/disable_by_file_path' :
+    value => '/etc/glance/healthcheck_disable',
+  }
+
+  glance_registry_paste_ini { 'pipeline:glance-registry-trusted-auth/pipeline' :
+    value => 'healthcheck osprofiler context registryapp',
+  }
+
+  glance_registry_paste_ini { 'pipeline:glance-registry/pipeline' :
+    value => 'healthcheck osprofiler unauthenticated-context registryapp',
+  }
+
+  glance_registry_paste_ini { 'pipeline:glance-registry-keystone/pipeline' :
+    value => 'healthcheck osprofiler authtoken context registryapp',
+  }
+
+  glance_registry_paste_ini { 'filter:healthcheck/paste.filter_factory' :
+    value => 'oslo_middleware:Healthcheck.factory',
+  }
+
+  glance_registry_paste_ini { 'filter:healthcheck/backends' :
+    value => 'disable_by_file',
+  }
+
+  glance_registry_paste_ini { 'filter:healthcheck/disable_by_file_path' :
+    value => '/etc/glance/healthcheck_disable',
+  }
+
 }
