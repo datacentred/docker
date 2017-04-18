@@ -21,3 +21,8 @@ neutron_db_pass: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFM
 neutron_api_port: '9696'
 
 os_region_name: 'sal01'
+
+memcached_servers:
+ - osdbmq0.%{::domain}
+ - osdbmq1.%{::domain}
+ - osdbmq2.%{::domain}
