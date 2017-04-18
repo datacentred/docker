@@ -2,6 +2,7 @@
 # ==Class: ::profile::openstack::nova
 #
 class profile::openstack::nova {
+  include ::dc_openstack::ini
   include ::nova
   include ::nova::api
   include ::nova::network::neutron

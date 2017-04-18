@@ -45,3 +45,29 @@ nova_db_user: 'nova'
 
 nova_api_db: 'nova_api'
 nova_api_db_user: 'nova_api'
+
+settings:
+  line1:
+    section: 'filter:healthcheck'
+    setting: 'paste.filter_factory'
+    value: 'oslo_middleware:Healthcheck.factory'
+  line2:
+    section: 'filter:healthcheck'
+    setting: 'backends'
+    value: 'disable_by_file'
+  line3:
+    section: 'filter:healthcheck'
+    setting: 'disable_by_file_path'
+    value: '/etc/nova/healthcheck_disable'
+  line4:
+    section: 'pipeline:meta'
+    setting: 'pipeline'
+    value: 'healthcheck cors metaapp'
+  line5:
+    section: 'pipeline:oscomputeversions'
+    setting: 'pipeline'
+    value: 'healthcheck faultwrap oscomputeversionapp'
+
+dc_openstack::ini::defaults:
+  require: Package[python-nova]
+  path: /etc/nova/api-paste.ini

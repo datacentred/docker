@@ -26,3 +26,93 @@ ceph::keys:
   /etc/ceph/ceph.client.cinder.keyring:
     user: 'client.cinder'
     key: ENC[PKCS7,MIIBmQYJKoZIhvcNAQcDoIIBijCCAYYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAivwvH1tZTSaqnfesNg9LI0ehzXgfVCqJTbAZeXzx3gFzib5PmEyJ3AV8t/P4F5QcAf7cNSdLCTfGuTo8dcFAlVUS1VfpCtwQ54vWiz+ZLrHKjP2/GW2bD7dAWiveIhrH+y+RWE+uSswAP26hdIxllwDbC2ctmBt8XDyXQMxrOfydXTxmr8+E2HWGDMC6WvTBc6zupVvw3PSpd+IWfuX1pGTzkN4990ZUpjLn6RTLrYrkmzvprJM4z2RtMPInEg9o3JO1gJGvzoA4tY9q/OfC/mZ7v+JAhGnJGRoBgjhQaL8jVfdYGTQMmZEbhTd0FCGoOy/qq6KItKjeFIvGuMUaFDBcBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBryaL7Gq8wKzUbglH8RCw0gDBrZwsCnFy/TNdrgp/80hCWkEeBVQ8VKEIhJJCBDcxSpzlFDx24VLUpeyk5gAH8K9M=]
+
+settings:
+  line1:
+    section: 'filter:healthcheck'
+    setting: 'paste.filter_factory'
+    value: 'oslo_middleware:Healthcheck.factory'
+    path: '/etc/glance/glance-api-paste.ini'
+  line2:
+    section: 'filter:healthcheck'
+    setting: 'backends'
+    value: 'disable_by_file'
+    path: '/etc/glance/glance-api-paste.ini'
+  line3:
+    section: 'filter:healthcheck'
+    setting: 'disable_by_file_path'
+    value: '/etc/glance/healthcheck_disable'
+    path: '/etc/glance/glance-api-paste.ini'
+  line4:
+    section: 'pipeline:glance-api'
+    setting: 'pipeline'
+    value: 'healthcheck cors versionnegotiation osprofiler unauthenticated-context rootapp'
+    path: '/etc/glance/glance-api-paste.ini'
+  line5:
+    section: 'pipeline:glance-api-caching'
+    setting: 'pipeline'
+    value: 'healthcheck cors versionnegotiation osprofiler unauthenticated-context cache rootapp'
+    path: '/etc/glance/glance-api-paste.ini'
+  line6:
+    section: 'pipeline:glance-api-cachemanagement'
+    setting: 'pipeline'
+    value: 'healthcheck cors versionnegotiation osprofiler unauthenticated-context cache cachemanage rootapp'
+    path: '/etc/glance/glance-api-paste.ini'
+  line7:
+    section: 'pipeline:glance-api-keystone'
+    setting: 'pipeline'
+    value: 'healthcheck cors versionnegotiation osprofiler authtoken context  rootapp'
+    path: '/etc/glance/glance-api-paste.ini'
+  line8:
+    section: 'pipeline:glance-api-keystone+caching'
+    setting: 'pipeline'
+    value: 'healthcheck cors versionnegotiation osprofiler authtoken context cache rootapp'
+    path: '/etc/glance/glance-api-paste.ini'
+  line9:
+    section: 'pipeline:glance-api-keystone+cachemanagement'
+    setting: 'pipeline'
+    value: 'healthcheck cors versionnegotiation osprofiler authtoken context cache cachemanage rootapp'
+    path: '/etc/glance/glance-api-paste.ini'
+  line10:
+    section: 'pipeline:glance-api-trusted-auth'
+    setting: 'pipeline'
+    value: 'healthcheck cors versionnegotiation osprofiler context rootapp'
+    path: '/etc/glance/glance-api-paste.ini'
+  line11:
+    section: 'pipeline:glance-api-trusted-auth+cachemanagement'
+    setting: 'pipeline'
+    value: 'healthcheck cors versionnegotiation osprofiler context cache cachemanage rootapp'
+    path: '/etc/glance/glance-api-paste.ini'
+  line20:
+    section: 'filter:healthcheck'
+    setting: 'paste.filter_factory'
+    value: 'oslo_middleware:Healthcheck.factory'
+    path: '/etc/glance/glance-registry-paste.ini'
+  line20:
+    section: 'filter:healthcheck'
+    setting: 'backends'
+    value: 'disable_by_file'
+    path: '/etc/glance/glance-registry-paste.ini'
+  line20:
+    section: 'filter:healthcheck'
+    setting: 'disable_by_file_path'
+    value: '/etc/glance/healthcheck_disable'
+    path: '/etc/glance/glance-registry-paste.ini'
+  line20:
+    section: 'pipeline:glance-registry-trusted-auth'
+    setting: 'pipeline'
+    value: 'healthcheck osprofiler context registryapp'
+    path: '/etc/glance/glance-registry-paste.ini'
+  line20:
+    section: 'pipeline:glance-registry'
+    setting: 'pipeline'
+    value: 'healthcheck osprofiler unauthenticated-context registryapp'
+    path: '/etc/glance/glance-registry-paste.ini'
+  line20:
+    section: 'pipeline:glance-registry-keystone'
+    setting: 'pipeline'
+    value: 'healthcheck osprofiler authtoken context registryapp'
+    path: '/etc/glance/glance-registry-paste.ini'
+
+dc_openstack::ini::defaults:
+  require: Package[python-glance-store]
