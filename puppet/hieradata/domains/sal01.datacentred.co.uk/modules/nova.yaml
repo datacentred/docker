@@ -4,7 +4,7 @@ nova::rabbit_hosts:
  - osdbmq1.%{::domain}
  - osdbmq2.%{::domain}
 
-nova::keystone::authtoken::memcached_servers:
+nova::memcached_servers:
  - osdbmq0.%{::domain}
  - osdbmq1.%{::domain}
  - osdbmq2.%{::domain}

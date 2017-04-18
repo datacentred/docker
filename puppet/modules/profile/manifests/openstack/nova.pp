@@ -22,6 +22,7 @@ class profile::openstack::nova {
     'keystone_authtoken/project_name':        value => 'services';
     'keystone_authtoken/username':            value => 'nova';
     'keystone_authtoken/password':            value => hiera('keystone_nova_password');
+    'DEFAULT/memcached_servers':              value => join(hiera('memcached_servers'), ',');
   }
 
   package { 'iptables':

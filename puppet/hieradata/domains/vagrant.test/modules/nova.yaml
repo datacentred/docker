@@ -2,8 +2,7 @@
 nova::rabbit_host: osdbmq0.%{::domain}
 nova::rabbit_ha_queues: false
 
-nova::keystone::authtoken::memcached_servers:
- - osdbmq0.%{::domain}
+nova::memcached_servers: osdbmq0.%{::domain}
 
 nova::api::osapi_compute_workers: '1'
 nova::api::metadata_workers: '1'

@@ -26,3 +26,6 @@ neutron_db_pass:     'alNanJetOcs6'
 neutron_api_port:    '9696'
 
 os_region_name: 'vagrant'
+
+memcached_servers:
+ - osdbmq0.%{::domain}
