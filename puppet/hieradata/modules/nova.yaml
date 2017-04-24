@@ -1,5 +1,7 @@
 ---
 nova::database_connection: "mysql://%{hiera('nova_db_user')}:%{hiera('nova_db_pass')}@%{hiera('os_api_host')}/%{hiera('nova_db')}"
+nova::database_max_pool_size: '200'
+nova::database_max_overflow: '60'
 nova::api_database_connection: "mysql://%{hiera('nova_api_db_user')}:%{hiera('nova_api_db_pass')}@%{hiera('os_api_host')}/%{hiera('nova_api_db')}"
 nova::image_service: 'nova.image.glance.GlanceImageService'
 nova::glance_api_servers: "https://%{hiera('os_api_host')}:9292"
