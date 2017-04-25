@@ -30,3 +30,5 @@ horizon::default_theme: 'datacentred'
 horizon::images_panel: 'angular'
 horizon::log_handler: 'console'
 horizon::password_retrieve: true
+horizon::enable_user_pass: false
+horizon::root_path: '/usr/share/openstack-dashboard/openstack_dashboard'
