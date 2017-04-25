@@ -15,15 +15,15 @@ class profile::openstack::nova {
   # TODO: Remove these hacky workarounds once we're at a version of OpenStack that's
   # properly supported by puppet-nova
   nova_config {
-    'keystone_authtoken/auth_url':             value => "https://${hiera('os_api_host')}:35357";
-    'keystone_authtoken/auth_plugin':          value => 'password';
-    'keystone_authtoken/project_domain_name':  value => 'default';
-    'keystone_authtoken/user_domain_name':     value => 'default';
-    'keystone_authtoken/project_name':         value => 'services';
-    'keystone_authtoken/username':             value => 'nova';
-    'keystone_authtoken/password':             value => hiera('keystone_nova_password');
-    'DEFAULT/memcached_servers':               value => join(hiera('memcached_servers'), ',');
-    'oslo_middleware/secure_proxy_ssl_header': value => 'X-Forwarded-Proto';
+    'keystone_authtoken/auth_url':            value => "https://${hiera('os_api_host')}:35357";
+    'keystone_authtoken/auth_plugin':         value => 'password';
+    'keystone_authtoken/project_domain_name': value => 'default';
+    'keystone_authtoken/user_domain_name':    value => 'default';
+    'keystone_authtoken/project_name':        value => 'services';
+    'keystone_authtoken/username':            value => 'nova';
+    'keystone_authtoken/password':            value => hiera('keystone_nova_password');
+    'DEFAULT/memcached_servers':              value => join(hiera('memcached_servers'), ',');
+    'DEFAULT/secure_proxy_ssl_header':        value => 'HTTP_X_FORWARDED_PROTO';
   }
 
   package { 'iptables':
