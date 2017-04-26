@@ -1,3 +1,5 @@
 ---
+neutron::server::l3_ha: false
+
 neutron::rabbit_hosts:
  - osdbmq0.%{::domain}

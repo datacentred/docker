@@ -60,9 +60,6 @@ neutron::server::notifications::nova_region_name: "%{hiera('os_region_name')}"
 neutron::server::notifications::auth_plugin: 'password'
 
 neutron::server::allow_automatic_l3agent_failover: true
-neutron::server::max_l3_agents_per_router: '2'
-neutron::server::min_l3_agents_per_router: '2'
-neutron::server::l3_ha: true
 
 neutron::agents::metadata::shared_secret: "%{hiera('neutron_metadata_secret')}"
 neutron::agents::metadata::auth_url: "https://%{hiera('os_api_host')}:35357/v2.0"
