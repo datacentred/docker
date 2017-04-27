@@ -59,7 +59,8 @@ neutron::server::notifications::nova_admin_password: "%{hiera('keystone_nova_pas
 neutron::server::notifications::nova_region_name: "%{hiera('os_region_name')}"
 neutron::server::notifications::auth_plugin: 'password'
 
-neutron::server::allow_automatic_l3agent_failover: true
+neutron::server::allow_automatic_l3agent_failover: false
+neutron::server::allow_automatic_dhcp_failover: false
 neutron::server::max_l3_agents_per_router: '2'
 neutron::server::min_l3_agents_per_router: '2'
 neutron::server::l3_ha: true
