@@ -8,7 +8,7 @@ class profile::openstack::neutron {
   include ::neutron::plugins::ml2
   include ::neutron::quota
 
-  ensure_packages(['python-neutron-lbaas'])
+  ensure_packages(['python-neutron-lbaas','python-neutron-vpnaas'])
 
   # TODO: Remove these hacky workarounds once we're at a version of OpenStack that's
   # properly supported by puppet-nova
