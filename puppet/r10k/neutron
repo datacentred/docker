@@ -12,24 +12,25 @@ mod 'puppetlabs-mysql'
 mod 'puppetlabs-dummy_service', '0.2.0'
 
 mod 'openstack/glance',
-    :git    => "https://github.com/openstack/puppet-glance"
+    :git => "https://github.com/openstack/puppet-glance",
+    :tag => "liberty-eol"
 
 mod 'openstack/openstacklib',
-    :git    => "https://github.com/openstack/puppet-openstacklib"
-
-mod 'openstack/oslo',
-    :git    => "https://github.com/openstack/puppet-oslo"
+    :git => "https://github.com/openstack/puppet-openstacklib",
+    :tag => "liberty-eol"
 
 mod 'openstack/keystone',
-    :git    => "https://github.com/openstack/puppet-keystone"
+    :git => "https://github.com/openstack/puppet-keystone",
+    :tag => "liberty-eol"
 
 mod 'openstack/cinder',
-    :git    => "https://github.com/openstack/puppet-cinder"
+    :git => "https://github.com/openstack/puppet-cinder",
+    :tag => "liberty-eol"
 
 mod 'openstack/nova',
-    :git    => "https://github.com/openstack/puppet-nova",
-    :branch => "stable/mitaka"
+    :git => "https://github.com/openstack/puppet-nova",
+    :tag => "liberty-eol"
 
 mod 'openstack/neutron',
-    :git    => "https://github.com/openstack/puppet-neutron",
-    :branch => "stable/mitaka"
+    :git => "https://github.com/openstack/puppet-neutron",
+    :tag => "liberty-eol"
