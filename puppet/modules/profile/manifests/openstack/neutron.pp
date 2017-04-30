@@ -23,6 +23,9 @@ class profile::openstack::neutron {
     'nova/project_domain_name':                                value => 'default';
     'nova/user_domain_name':                                   value => 'default';
     'DEFAULT/enable_services_on_agents_with_admin_state_down': value => true;
+    'DEFAULT/executor_thread_pool_size':                       value => '2048';
+    'DEFAULT/rpc_conn_pool_size':                              value => '60';
+    'DEFAULT/rpc_response_timeout':                            value => '960';
   }
 
 }
