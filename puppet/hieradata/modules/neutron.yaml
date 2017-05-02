@@ -17,6 +17,7 @@ neutron::verbose: true
 neutron::use_syslog: true
 neutron::user_stderr: true
 neutron::log_dir: "%{::os_service_default}"
+neutron::rpc_response_timeout: '960'
 
 neutron::keystone::authtoken::username: 'neutron'
 neutron::keystone::authtoken::password: "%{hiera('keystone_neutron_password')}"
