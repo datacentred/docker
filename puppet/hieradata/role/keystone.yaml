@@ -13,3 +13,41 @@ service:
 keystone_db_user: 'keystone'
 
 apache::mpm_module: 'event'
+
+settings:
+  line1:
+    section: 'filter:healthcheck'
+    setting: 'paste.filter_factory'
+    value: 'oslo_middleware:Healthcheck.factory'
+  line2:
+    section: 'filter:healthcheck'
+    setting: 'backends'
+    value: 'disable_by_file'
+  line3:
+    section: 'filter:healthcheck'
+    setting: 'disable_by_file_path'
+    value: '/etc/keystone/healthcheck_disable'
+  line4:
+    section: 'pipeline:public_api'
+    setting: 'pipeline'
+    value: 'healthcheck cors sizelimit url_normalize request_id admin_token_auth build_auth_context token_auth json_body ec2_extension public_service'
+  line5:
+    section: 'pipeline:admin_api'
+    setting: 'pipeline'
+    value: 'healthcheck cors sizelimit url_normalize request_id admin_token_auth build_auth_context token_auth json_body ec2_extension s3_extension admin_service'
+  line6:
+    section: 'pipeline:api_v3'
+    setting: 'pipeline'
+    value: 'healthcheck cors sizelimit url_normalize request_id admin_token_auth build_auth_context token_auth json_body ec2_extension_v3 s3_extension service_v3'
+  line7:
+    section: 'pipeline:public_version_api'
+    setting: 'pipeline'
+    value: 'healthcheck cors sizelimit url_normalize public_version_service'
+  line8:
+    section: 'pipeline:admin_version_api'
+    setting: 'pipeline'
+    value: 'healthcheck cors sizelimit url_normalize admin_version_service'
+
+dc_openstack::ini::defaults:
+  path: '/etc/keystone/keystone-paste.ini'
+  require: Package[keystone]

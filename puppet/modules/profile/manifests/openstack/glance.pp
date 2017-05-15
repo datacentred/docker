@@ -2,6 +2,7 @@
 # == Class: profile::openstack::glance
 #
 class profile::openstack::glance {
+  include ::dc_openstack::ini
   include ::glance::api
   include ::glance::api::authtoken
   include ::glance::registry

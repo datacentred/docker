@@ -2,6 +2,7 @@
 #
 class profile::openstack::keystone {
 
+  include ::dc_openstack::ini
   include ::keystone
   include ::keystone::wsgi::apache
 
