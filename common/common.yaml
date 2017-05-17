@@ -3,7 +3,7 @@ MAINTAINER: 'devops@datacentred.co.uk'
 
 DOCKER_BUILD_DOMAIN: 'sal01.datacentred.co.uk'
 PUPPET_AGENT_VERSION: '1.8.2'
-UBUNTU_CODENAME: 'xenial'
+DIST_CODENAME: 'xenial'
 PATH: '/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH'
 MOUNT:
   puppet: '/opt/puppetlabs /etc/puppetlabs /root/.gem'
@@ -14,11 +14,11 @@ RUN:
   puppet_install: |
     apt-get update && \
     apt-get install -y lsb-release inetutils-ping vim git wget && \
-    wget https://apt.puppetlabs.com/puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
-    dpkg -i puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
-    rm puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
+    wget https://apt.puppetlabs.com/puppetlabs-release-pc1-"$DIST_CODENAME".deb && \
+    dpkg -i puppetlabs-release-pc1-"$DIST_CODENAME".deb && \
+    rm puppetlabs-release-pc1-"$DIST_CODENAME".deb && \
     apt-get update && \
-    apt-get install --no-install-recommends -y puppet-agent="$PUPPET_AGENT_VERSION"-1"$UBUNTU_CODENAME" && \
+    apt-get install --no-install-recommends -y puppet-agent="$PUPPET_AGENT_VERSION"-1"$DIST_CODENAME" && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
   install_gems: '/opt/puppetlabs/puppet/bin/gem install hiera-eyaml deep_merge r10k:2.2.2 --no-ri --no-rdoc'
