@@ -113,6 +113,3 @@ settings:
     setting: 'pipeline'
     value: 'healthcheck osprofiler authtoken context registryapp'
     path: '/etc/glance/glance-registry-paste.ini'
-
-dc_openstack::ini::defaults:
-  require: Package[python-glance-store]
