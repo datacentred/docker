@@ -51,23 +51,24 @@ settings:
     section: 'filter:healthcheck'
     setting: 'paste.filter_factory'
     value: 'oslo_middleware:Healthcheck.factory'
+    path: '/etc/nova/api-paste.ini'
   line2:
     section: 'filter:healthcheck'
     setting: 'backends'
     value: 'disable_by_file'
+    path: '/etc/nova/api-paste.ini'
   line3:
     section: 'filter:healthcheck'
     setting: 'disable_by_file_path'
     value: '/etc/nova/healthcheck_disable'
+    path: '/etc/nova/api-paste.ini'
   line4:
     section: 'pipeline:meta'
     setting: 'pipeline'
     value: 'healthcheck cors metaapp'
+    path: '/etc/nova/api-paste.ini'
   line5:
     section: 'pipeline:oscomputeversions'
     setting: 'pipeline'
     value: 'healthcheck faultwrap oscomputeversionapp'
-
-dc_openstack::ini::defaults:
-  require: Package[python-nova]
-  path: /etc/nova/api-paste.ini
+    path: '/etc/nova/api-paste.ini'
