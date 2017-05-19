@@ -65,7 +65,7 @@ settings:
   line4:
     section: 'pipeline:meta'
     setting: 'pipeline'
-    value: 'healthcheck cors metaapp'
+    value: 'healthcheck ec2faultwrap logrequest metaapp'
     path: '/etc/nova/api-paste.ini'
   line5:
     section: 'pipeline:oscomputeversions'
