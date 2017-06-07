@@ -8,6 +8,6 @@ class profile::util::prompt {
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => $::role,
+    content => $::node,
   }
 }
