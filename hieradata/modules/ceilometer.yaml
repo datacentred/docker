@@ -10,10 +10,6 @@ ceilometer::keystone::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000
 ceilometer::keystone::authtoken::auth_version: '3'
 # Install python-memcache
 ceilometer::keystone::authtoken::manage_memcache_package: true
-ceilometer::keystone::authtoken::memcached_servers:
- - "osdbmq0.%{::domain}"
- - "osdbmq1.%{::domain}"
- - "osdbmq2.%{::domain}"
 ceilometer::keystone::authtoken::region_name: "%{hiera('os_region_name')}"
 
 # When using Apache and `manage_service == false`, `enabled` doesn't matter
@@ -69,9 +65,6 @@ ceilometer::expirer::enable_cron: true # default
 ceilometer::wsgi::apache::servername: "%{::fqdn}" # default
 ceilometer::wsgi::apache::port: "%{hiera('ceilometer_port')}"
 ceilometer::wsgi::apache::ssl: false
-# Adjust the number of workers depending on our needs
-ceilometer::wsgi::apache::workers: '4'
-ceilometer::wsgi::apache::threads: '2'
 
 # Use `telemetry_secret` instead of deprecated `metering_secret`
 ceilometer::telemetry_secret: "%{hiera('ceilometer_metering_secret')}"
@@ -80,10 +73,6 @@ ceilometer::event_time_to_live: '1209600'
 # `alarm_history_time_to_live` is set in the Aodh config
 
 ceilometer::rpc_backend: 'rabbit' # default
-ceilometer::rabbit_hosts:
- - "osdbmq0.%{::domain}"
- - "osdbmq1.%{::domain}"
- - "osdbmq2.%{::domain}"
 ceilometer::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
 ceilometer::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
 ceilometer::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"

@@ -22,12 +22,6 @@ class profile::openstack::ceilometer {
     require => Package['httpd'],
   }
 
-# Commented out as Aodh creates the file.
-#  file { '/var/log/apache2/error.log':
-#    target  => '/dev/stderr',
-#    require => Package['httpd'],
-#  }
-
   file { '/etc/ceilometer/event_definitions.yaml':
     ensure  => present,
     content => file('dc_openstack/event_definitions.yaml'),

@@ -10,10 +10,6 @@ aodh::keystone::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000"
 aodh::keystone::authtoken::auth_version: '3'
 # Install python-memcache
 aodh::keystone::authtoken::manage_memcache_package: true
-aodh::keystone::authtoken::memcached_servers:
- - "osdbmq0.%{::domain}"
- - "osdbmq1.%{::domain}"
- - "osdbmq2.%{::domain}"
 aodh::keystone::authtoken::region_name: "%{hiera('os_region_name')}"
 
 # Credentials for the [service_credentials] section
@@ -36,17 +32,11 @@ aodh::api::auth_strategy: 'keystone # default'
 aodh::wsgi::apache::servername: "%{::fqdn}" # default
 aodh::wsgi::apache::port: "%{hiera('aodh_port')}"
 aodh::wsgi::apache::ssl: false
-aodh::wsgi::apache::workers: '2'
-aodh::wsgi::apache::threads: '1'
 aodh::wsgi::apache::priority: '10' # default
 
 # Replaces ceilometer's alarm_history_time_to_live
 aodh::alarm_history_time_to_live: '86401'
 aodh::rpc_backend: 'rabbit' # default
-aodh::rabbit_hosts:
- - "osdbmq0.%{::domain}"
- - "osdbmq1.%{::domain}"
- - "osdbmq2.%{::domain}"
 aodh::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
 aodh::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
 aodh::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
