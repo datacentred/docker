@@ -1,0 +1,83 @@
+---
+ceilometer::keystone::authtoken::username: 'ceilometer' # default
+ceilometer::keystone::authtoken::password: "%{hiera('keystone_ceilometer_password')}"
+ceilometer::keystone::authtoken::auth_url: "https://%{hiera('os_api_host')}:35357"
+ceilometer::keystone::authtoken::project_name: 'services' # default
+ceilometer::keystone::authtoken::user_domain_name: 'Default'
+ceilometer::keystone::authtoken::project_domain_name: 'Default'
+ceilometer::keystone::authtoken::auth_type: 'password' # default
+ceilometer::keystone::authtoken::auth_uri: "https://%{hiera('os_api_host')}:5000"
+ceilometer::keystone::authtoken::auth_version: '3'
+# Install python-memcache
+ceilometer::keystone::authtoken::manage_memcache_package: true
+ceilometer::keystone::authtoken::region_name: "%{hiera('os_region_name')}"
+
+# When using Apache and `manage_service == false`, `enabled` doesn't matter
+ceilometer::api::enabled: true # default
+ceilometer::api::manage_service: false
+ceilometer::api::port: "%{hiera('ceilometer_port')}"
+ceilometer::api::service_name: 'httpd'
+ceilometer::api::auth_strategy: 'keystone' # default
+
+# This part is responsible for credentials in the [service_credentials] section
+ceilometer::agent::auth::auth_url: "https://%{hiera('os_api_host')}:5000/v3"
+ceilometer::agent::auth::auth_user: 'ceilometer' # default
+ceilometer::agent::auth::auth_password: "%{hiera('keystone_ceilometer_password')}"
+ceilometer::agent::auth::auth_region: "%{hiera('os_region_name')}"
+ceilometer::agent::auth::auth_tenant_name: 'services' # default
+ceilometer::agent::auth::auth_endpoint_type: 'internalURL'
+ceilometer::agent::auth::auth_user_domain_name: 'Default' # default
+ceilometer::agent::auth::auth_project_domain_name: 'Default' # default
+ceilometer::agent::auth::auth_type: 'password' # default
+
+ceilometer::agent::central::enabled: true # default
+ceilometer::agent::central::manage_service: false
+
+ceilometer::agent::notification::enabled: true # default
+ceilometer::agent::notification::manage_service: false
+# The `event_pipeline.yaml` is pretty simple, so let Puppet manage it for now.
+ceilometer::agent::notification::manage_event_pipeline: true
+# Put Aodh in the event pipeline
+ceilometer::agent::notification::event_pipeline_publishers: ['notifier://', 'notifier://?topic=alarm.all']
+# Use our own `pipeline.yaml`
+ceilometer::agent::notification::manage_pipeline: false # default
+# TODO: Set the above to true and let Puppet manage the pipeline
+#ceilometer::agent::notification::pipeline_publishers: ['notifier://']
+# By default events are not stored in the database!
+ceilometer::agent::notification::store_events: true
+# We want events to also be available as meters for now.
+# TODO: Disable this and work directly with events.
+ceilometer::agent::notification::disable_non_metric_meters: false
+
+ceilometer::collector::enabled: true # default
+ceilometer::collector::manage_service: false
+# These can be changed to 'gnocchi' if we want to store the data in Gnocchi's database
+ceilometer::collector::meter_dispatcher: 'database' # default
+ceilometer::collector::event_dispatcher: 'database' # default
+# May need adjusting based on our needs
+#ceilometer::collector::collector_workers: 1
+
+ceilometer::db::database_connection: "mongodb://ceilometer:%{hiera('ceilometer_db_password')}@osmongodb0.%{::domain},osmongodb1.%{::domain},osmongodb2.%{::domain}/ceilometer?replicaSet=ceilometer"
+ceilometer::db::sync_db: false
+
+ceilometer::expirer::enable_cron: true # default
+
+ceilometer::wsgi::apache::servername: "%{::fqdn}" # default
+ceilometer::wsgi::apache::port: "%{hiera('ceilometer_port')}"
+ceilometer::wsgi::apache::ssl: false
+
+# Use `telemetry_secret` instead of deprecated `metering_secret`
+ceilometer::telemetry_secret: "%{hiera('ceilometer_metering_secret')}"
+ceilometer::metering_time_to_live: '1209600'
+ceilometer::event_time_to_live: '1209600'
+# `alarm_history_time_to_live` is set in the Aodh config
+
+ceilometer::rpc_backend: 'rabbit' # default
+ceilometer::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
+ceilometer::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
+ceilometer::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
+ceilometer::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
+ceilometer::debug: false
+ceilometer::use_syslog: false
+ceilometer::use_stderr: true
+ceilometer::log_dir: "%{::os_service_default}"

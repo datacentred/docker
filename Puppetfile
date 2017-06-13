@@ -5,13 +5,17 @@ mod 'puppetlabs-stdlib',
 mod 'puppetlabs/ntp',
     :git => "https://github.com/puppetlabs/puppetlabs-ntp.git"
 mod 'ajcrowe/supervisord'
-mod 'puppetlabs/apt'
+mod 'puppetlabs/apt', '2.4.0'
 mod 'puppetlabs/apache'
 mod 'puppetlabs/concat', '1.2.5'
 mod 'puppetlabs-dummy_service', '0.2.0'
 mod 'puppetlabs/inifile'
 mod 'puppetlabs/mysql'
 mod 'openstack-nova', '8.0.1'
+mod 'puppet/staging'
+mod 'rmueller/cron'
+mod 'puppetlabs/rabbitmq'
+mod 'puppetlabs/postgresql'
 
 mod 'openstack/glance',
     :git    => "https://github.com/openstack/puppet-glance",
@@ -32,6 +36,14 @@ mod 'openstack/keystone',
 mod 'openstack/neutron',
     :git => "https://github.com/openstack/puppet-neutron",
     :tag => "liberty-eol"
+
+mod 'openstack/aodh',
+    :git    => "https://github.com/openstack/puppet-aodh",
+    :branch => "stable/newton"
+
+mod 'openstack/ceilometer',
+    :git    => "https://github.com/openstack/puppet-ceilometer",
+    :branch => "master"
 
 mod 'openstack/openstacklib',
     :git    => "https://github.com/openstack/puppet-openstacklib",

@@ -1,0 +1,11 @@
+---
+ceilometer::keystone::authtoken::memcached_servers: memcached_servers
+
+ceilometer::rabbit_hosts:
+ - "osdbmq0.%{::domain}"
+ - "osdbmq1.%{::domain}"
+ - "osdbmq2.%{::domain}"
+
+# Adjust the number of workers depending on our needs
+ceilometer::wsgi::apache::workers: '4'
+ceilometer::wsgi::apache::threads: '2'
