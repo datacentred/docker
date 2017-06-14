@@ -11,6 +11,8 @@ mod 'puppetlabs/concat', '1.2.5'
 mod 'puppetlabs-dummy_service', '0.2.0'
 mod 'puppetlabs/inifile'
 mod 'puppetlabs/mysql'
+mod 'openstack-vswitch'
+mod 'duritong-sysctl'
 mod 'openstack-nova', '8.0.1'
 mod 'puppet/staging'
 mod 'rmueller/cron'
@@ -19,6 +21,10 @@ mod 'puppetlabs/postgresql'
 
 mod 'openstack/glance',
     :git    => "https://github.com/openstack/puppet-glance",
+    :branch => "master"
+
+mod 'openstack/horizon',
+    :git    => "https://github.com/openstack/puppet-horizon",
     :branch => "master"
 
 mod 'openstack/cinder',
@@ -53,3 +59,6 @@ mod 'spjmurray/ceph', '1.5.1'
 
 mod 'datacentred/dc_openstack',
     :git => "https://github.com/datacentred/dc_openstack"
+
+mod 'datacentred/branding',
+    :git => "https://github.com/datacentred/branding.git"
