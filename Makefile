@@ -1,3 +1,5 @@
+SHELL:=/usr/bin/env bash
+
 PUSH=false
 DOMAIN=sal01.datacentred.co.uk
 VCSREF=$(shell git rev-parse --short HEAD)
