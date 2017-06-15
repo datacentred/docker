@@ -8,8 +8,8 @@ PDB=puppet docker build --rocker --label-schema \
 		--factfile=env/$(DOMAIN).txt \
 		--image-name $@
 
-all:		all keystone glance cinder horizon nova neutron telemetry clean
-.PHONY:	all keystone glance cinder horizon nova neutron telemetry clean
+all:		all keystone glance cinder horizon nova neutron telemetry heat clean
+.PHONY:	all keystone glance cinder horizon nova neutron telemetry heat clean
 
 keystone:
 	$(PDB) --expose=5000,35357
@@ -43,6 +43,11 @@ horizon:
 
 telemetry:
 	$(PDB) --expose=8042,8777
+	docker tag $@ $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF)
+	@if [ $(PUSH) == true ]; then docker push $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF) ; fi
+
+heat:
+	$(PDB) --expose=8000,8003,8004
 	docker tag $@ $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF)
 	@if [ $(PUSH) == true ]; then docker push $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF) ; fi
 

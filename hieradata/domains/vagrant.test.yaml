@@ -10,6 +10,9 @@ keystone_nova_password: 'bebUjecyawp5'
 keystone_neutron_password: '6OnVeetecpit'
 keystone_aodh_password: 'h22kTHtR5UqO'
 keystone_ceilometer_password: 'udbedkicsOv6'
+keystone_heat_password: 'Frethyuvtop6'
+
+os_region_name: 'vagrant'
 
 keystone_db_pass: 'AmjemejHuph8'
 glance_db_pass:  'DishrubChop2'
@@ -18,6 +21,7 @@ nova_db_pass: 'NuIthkobyad9'
 nova_api_db_pass: 'ClajDitBapt9'
 aodh_db_pass: 'uNg943dewJx6'
 ceilometer_db_password: 'mowdasUsDyp5'
+heat_db_pass: 'yeOv7wrixVer'
 
 osdbmq_rabbitmq_pw: 'OjCurgIjurr4'
 
@@ -35,3 +39,6 @@ memcached_servers:
  - osdbmq0.%{::domain}
 
 ceilometer_metering_secret: 'ZojEix6C5py2Z4ANwojvR18syd37sQKo'
+
+heat_domain_password: '5QUIWduOZv1u'
+heat_engine_enc_key: '9lhd75f2wseq42ad3psqnd5759k44154'
