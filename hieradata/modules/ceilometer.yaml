@@ -77,7 +77,7 @@ ceilometer::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
 ceilometer::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
 ceilometer::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
 ceilometer::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
-ceilometer::debug: false
+ceilometer::debug: true
 ceilometer::use_syslog: false
 ceilometer::use_stderr: true
 ceilometer::log_dir: "%{::os_service_default}"
