@@ -1,3 +1,6 @@
+#
+# ==Class: ::profile::openstack::ceilometer
+#
 class profile::openstack::ceilometer {
 
   include ::ceilometer
@@ -28,7 +31,7 @@ class profile::openstack::ceilometer {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    require =>  Class['::ceilometer::agent::notification'],
+    require => Class['::ceilometer::agent::notification'],
   }
 
   file { '/etc/ceilometer/pipeline.yaml':
@@ -37,7 +40,16 @@ class profile::openstack::ceilometer {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    require =>  Class['::ceilometer::agent::notification'],
+    require => Class['::ceilometer::agent::notification'],
+  }
+
+  file { '/usr/lib/python2.7/dist-packages/ceilometer/api/controllers/v2/events.py':
+      ensure  => present,
+      content => file('dc_openstack/events.py'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      require => Class['::ceilometer'],
   }
 
 }
