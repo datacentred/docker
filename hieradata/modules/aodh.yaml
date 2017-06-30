@@ -25,14 +25,8 @@ aodh::auth::auth_type: 'password'
 aodh::api::enabled: true # default
 aodh::api::manage_service: false
 aodh::api::port: "%{hiera('aodh_port')}"
-aodh::api::service_name: 'httpd'
 aodh::api::sync_db: false
 aodh::api::auth_strategy: 'keystone # default'
-
-aodh::wsgi::apache::servername: "%{::fqdn}" # default
-aodh::wsgi::apache::port: "%{hiera('aodh_port')}"
-aodh::wsgi::apache::ssl: false
-aodh::wsgi::apache::priority: '10' # default
 
 # Replaces ceilometer's alarm_history_time_to_live
 aodh::alarm_history_time_to_live: '86401'
