@@ -25,6 +25,11 @@ class profile::openstack::ceilometer {
     require => Package['httpd'],
   }
 
+  file { '/var/log/apache2/error.log':
+    target  => '/dev/stderr',
+    require => Package['httpd'],
+  }
+
   file { '/etc/ceilometer/event_definitions.yaml':
     ensure  => present,
     content => file('dc_openstack/event_definitions.yaml'),
@@ -41,15 +46,6 @@ class profile::openstack::ceilometer {
     group   => 'root',
     mode    => '0644',
     require => Class['::ceilometer::agent::notification'],
-  }
-
-  file { '/usr/lib/python2.7/dist-packages/ceilometer/api/controllers/v2/events.py':
-      ensure  => present,
-      content => file('dc_openstack/events.py'),
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0644',
-      require => Class['::ceilometer'],
   }
 
 }

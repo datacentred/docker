@@ -43,8 +43,13 @@ horizon:
 	docker tag $@ $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF)
 	@if [ $(PUSH) == true ]; then docker push $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF) ; fi
 
-telemetry:
-	$(PDB) --expose=8042,8777
+ceilometer:
+	$(PDB) --expose=8777
+	docker tag $@ $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF)
+	@if [ $(PUSH) == true ]; then docker push $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF) ; fi
+
+aodh:
+	$(PDB) --expose=8042
 	docker tag $@ $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF)
 	@if [ $(PUSH) == true ]; then docker push $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF) ; fi
 

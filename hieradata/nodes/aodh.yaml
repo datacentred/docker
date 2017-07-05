@@ -1,0 +1,34 @@
+---
+classes:
+  - '::profile::openstack::aodh'
+
+service:
+  'aodh-api':
+    'command': '/usr/sbin/apachectl -DFOREGROUND'
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
+  'aodh-evaluator':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
+    'command': '/usr/bin/aodh-evaluator'
+  'aodh-listener':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
+    'command': '/usr/bin/aodh-listener'
+  'aodh-notifier':
+    'stdout_logfile': '/dev/stdout'
+    'stderr_logfile': '/dev/stderr'
+    'stdout_logfile_maxbytes': '0'
+    'stderr_logfile_maxbytes': '0'
+    'command': '/usr/bin/aodh-notifier'
+
+aodh_db: 'aodh'         # default
+aodh_db_user: 'aodh'    # default
+aodh_port: 8042         # default
+#keystone_aodh_email: "devops@datacentred.co.uk"
