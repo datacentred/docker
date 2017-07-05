@@ -31,4 +31,5 @@ horizon::images_panel: 'angular'
 horizon::log_handler: 'console'
 horizon::password_retrieve: true
 horizon::enable_user_pass: false
-horizon::root_path: '/usr/share/openstack-dashboard/openstack_dashboard'
+horizon::root_path: '/var/lib/openstack-dashboard'
+horizon::help_url: 'https://docs.datacentred.io'
