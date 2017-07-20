@@ -36,24 +36,24 @@ mod 'openstack/oslo',
     :branch => "master"
 
 mod 'openstack/keystone',
-    :git    => "https://github.com/openstack/puppet-keystone",
-    :branch => "master"
+    :git => "https://github.com/openstack/puppet-keystone",
+    :tag => "11.1.0"
 
 mod 'openstack/neutron',
     :git => "https://github.com/openstack/puppet-neutron",
     :tag => "liberty-eol"
 
 mod 'openstack/aodh',
-    :git    => "https://github.com/openstack/puppet-aodh",
-    :branch => "stable/newton"
+    :git => "https://github.com/openstack/puppet-aodh",
+    :tag => "9.5.0"
 
 mod 'openstack/ceilometer',
     :git    => "https://github.com/openstack/puppet-ceilometer",
     :branch => "master"
 
 mod 'openstack/heat',
-    :git    => "https://github.com/openstack/puppet-heat",
-    :tag    => "9.4.1"
+    :git => "https://github.com/openstack/puppet-heat",
+    :tag => "9.4.1"
 
 mod 'openstack/openstacklib',
     :git    => "https://github.com/openstack/puppet-openstacklib",
