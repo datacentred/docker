@@ -14,6 +14,15 @@ keystone_db_user: 'keystone'
 
 apache::mpm_module: 'event'
 
+apt::sources:
+  cloudarchive_mirror:
+    location: "http://ubuntu-cloud.archive.canonical.com/ubuntu"
+    release: 'xenial-updates/newton'
+    repos: 'main'
+    key:
+      id: '391A9AA2147192839E9DB0315EDB1B62EC4926EA'
+      server: 'keyserver.ubuntu.com'
+
 settings:
   line1:
     section: 'filter:healthcheck'

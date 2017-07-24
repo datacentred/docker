@@ -1,6 +1,4 @@
 ---
-keystone::rabbit_host: "osdbmq0.%{::domain}"
-
 keystone::memcache_servers:
   - "osdbmq0.%{::domain}"
 
