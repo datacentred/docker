@@ -10,6 +10,13 @@ service:
     'stdout_logfile_maxbytes': '0'
     'stderr_logfile_maxbytes': '0'
 
-branding::horizon::release: 'mitaka'
+apt::sources:
+  cloudarchive_mirror_pike:
+    location: "http://ubuntu-cloud.archive.canonical.com/ubuntu"
+    release: 'xenial-updates/pike'
+    repos: 'main'
+    key:
+      id: '391A9AA2147192839E9DB0315EDB1B62EC4926EA'
+      server: 'keyserver.ubuntu.com'
 
 apache::mpm_module: 'event'

@@ -65,4 +65,5 @@ mod 'datacentred/dc_openstack',
     :git => "https://github.com/datacentred/dc_openstack"
 
 mod 'datacentred/branding',
-    :git => "https://github.com/datacentred/branding.git"
+    :git => "https://github.com/datacentred/branding.git",
+    :branch => "master"
