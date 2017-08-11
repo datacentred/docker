@@ -42,6 +42,8 @@ nova::api::default_floating_pool: 'external'
 nova::api::admin_password: "%{hiera('keystone_nova_password')}"
 nova::api::auth_uri: "https://%{hiera('os_api_host')}:5000/"
 nova::api::identity_uri: "https://%{hiera('os_api_host')}:35357/"
+nova::api::secure_proxy_ssl_header: "HTTP_X_FORWARDED_PROTO"
+nova::api::service_name: 'nova-api'
 
 nova::network::neutron::neutron_url: "https://%{hiera('os_api_host')}:9696"
 nova::network::neutron::neutron_auth_plugin: 'password'

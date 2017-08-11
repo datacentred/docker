@@ -13,7 +13,6 @@ mod 'puppetlabs/inifile'
 mod 'puppetlabs/mysql'
 mod 'openstack-vswitch'
 mod 'duritong-sysctl'
-mod 'openstack-nova', '8.0.1'
 mod 'puppet/staging'
 mod 'rmueller/cron'
 mod 'puppetlabs/rabbitmq'
@@ -42,6 +41,10 @@ mod 'openstack/keystone',
 mod 'openstack/neutron',
     :git => "https://github.com/openstack/puppet-neutron",
     :tag => "liberty-eol"
+
+mod 'openstack/nova',
+    :git => "https://github.com/openstack/puppet-nova",
+    :tag => "mitaka-eol"
 
 mod 'openstack/aodh',
     :git => "https://github.com/openstack/puppet-aodh",
