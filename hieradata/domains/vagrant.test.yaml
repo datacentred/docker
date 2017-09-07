@@ -23,6 +23,7 @@ aodh_db_pass: 'uNg943dewJx6'
 ceilometer_db_password: 'mowdasUsDyp5'
 heat_db_pass: 'yeOv7wrixVer'
 
+osdbmq_rabbit_transport: "rabbit://openstack:%{hiera('osdbmq_rabbitmq_pw')}@osdbmq0.%{::domain}/"
 osdbmq_rabbitmq_pw: 'OjCurgIjurr4'
 
 neutron_admin_user:  'neutron'
