@@ -69,6 +69,10 @@ neutron::server::max_l3_agents_per_router: '2'
 neutron::server::min_l3_agents_per_router: '2'
 neutron::server::l3_ha: true
 
+neutron::server::service_providers:
+  - 'LOADBALANCER:Haproxy:neutron_lbaas.services.loadbalancer.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver'
+  - 'VPN:openswan:neutron_vpnaas.services.vpn.service_drivers.ipsec.IPsecVPNDriver:default'
+
 neutron::quota::quota_floatingip: '1'
 
 neutron::policy::policies:
