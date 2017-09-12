@@ -19,10 +19,8 @@ heat::keystone::domain::manage_domain: false
 heat::keystone::domain::manage_user: false
 heat::keystone::domain::manage_role: false
 
-heat::rabbit_port: "%{hiera('osdbmq_rabbitmq_port')}"
-heat::rabbit_userid: "%{hiera('osdbmq_rabbitmq_user')}"
-heat::rabbit_password: "%{hiera('osdbmq_rabbitmq_pw')}"
-heat::rabbit_virtual_host: "%{hiera('osdbmq_rabbitmq_vhost')}"
+heat::default_transport_url: "%{hiera('osdbmq_rabbit_transport')}"
+heat::rabbit_ha_queues: true
 
 heat::debug: false
 heat::use_syslog: false
@@ -36,6 +34,9 @@ heat::database_connection: "mysql://%{hiera('heat_db_user')}:%{hiera('heat_db_pa
 heat::sync_db: false
 heat::enable_stack_adopt: true
 heat::enable_stack_abandon: true
+
+# Enable parsing of SSL proxy headers
+heat::enable_proxy_headers_parsing: true
 
 heat::api::enabled: true # default
 heat::api::manage_service: false

@@ -1,10 +1,5 @@
 ---
 heat::keystone::authtoken::memcached_servers: memcached_servers
 
-heat::rabbit_hosts:
-  - osdbmq0.%{::domain}
-  - osdbmq1.%{::domain}
-  - osdbmq2.%{::domain}
-
 heat::api::workers: 2
 heat::engine::num_engine_workers: 2
