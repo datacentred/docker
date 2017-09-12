@@ -34,7 +34,7 @@ nova:
 	@if [ $(PUSH) == true ]; then docker push $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF) ; fi
 
 neutron:
-	$(PDB) --expose=9696 --from ubuntu:14.04
+	$(PDB) --expose=9696
 	docker tag $@ $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF)
 	@if [ $(PUSH) == true ]; then docker push $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF) ; fi
 

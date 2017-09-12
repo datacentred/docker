@@ -41,7 +41,7 @@ mod 'openstack/keystone',
 
 mod 'openstack/neutron',
     :git => "https://github.com/openstack/puppet-neutron",
-    :tag => "liberty-eol"
+    :tag => "mitaka-eol"
 
 mod 'openstack/aodh',
     :git => "https://github.com/openstack/puppet-aodh",
