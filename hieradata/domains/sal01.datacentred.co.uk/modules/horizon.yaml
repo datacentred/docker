@@ -1,0 +1,3 @@
+---
+horizon::wsgi::apache::wsgi_processes: 2
+horizon::wsgi::apache::wsgi_threads: 4

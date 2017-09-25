@@ -4,6 +4,7 @@
 #
 class profile::openstack::horizon {
   include ::horizon
+  include ::horizon::wsgi::apache
   include ::branding::horizon
 
   file { '/var/log/apache2/horizon_access.log':
