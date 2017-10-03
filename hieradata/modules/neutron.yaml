@@ -10,9 +10,9 @@ neutron::core_plugin: 'ml2'
 neutron::service_plugins:
  - 'router'
  - 'firewall'
- - 'lbaas'
  - 'vpnaas'
  - 'metering'
+ - 'neutron_lbaas.services.loadbalancer.plugin.LoadBalancerPluginv2'
 neutron::verbose: true
 neutron::use_syslog: true
 neutron::user_stderr: true
@@ -68,6 +68,10 @@ neutron::server::allow_automatic_dhcp_failover: false
 neutron::server::max_l3_agents_per_router: '2'
 neutron::server::min_l3_agents_per_router: '2'
 neutron::server::l3_ha: true
+
+neutron::server::service_providers:
+  - 'LOADBALANCERV2:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default'
+  - 'VPN:openswan:neutron_vpnaas.services.vpn.service_drivers.ipsec.IPsecVPNDriver:default'
 
 neutron::quota::quota_floatingip: '1'
 
