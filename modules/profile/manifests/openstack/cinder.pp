@@ -32,16 +32,5 @@ class profile::openstack::cinder {
     },
   }
 
-  cinder::backend::rbd { 'cinder.volumes.flash':
-    rbd_pool        => 'cinder.volumes.flash',
-    rbd_user        => $rbd_user,
-    rbd_secret_uuid => $rbd_secret_uuid,
-    extra_options   => {
-      'cinder.volumes.flash/storage_availability_zone' => {
-        'value' => 'Production',
-      },
-    },
-  }
-
 }
 
