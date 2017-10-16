@@ -24,26 +24,16 @@ class profile::openstack::nova {
     'keystone_authtoken/username':            value => 'nova';
     'keystone_authtoken/password':            value => hiera('keystone_nova_password');
     'DEFAULT/memcached_servers':              value => join(hiera('memcached_servers'), ',');
-    'DEFAULT/secure_proxy_ssl_header':        value => 'HTTP_X_FORWARDED_PROTO';
   }
 
   package { 'iptables':
     ensure => present,
-  }->
-  file { ['/sbin/iptables-save', '/sbin/iptables-restore']:
+  }
+  -> file { ['/sbin/iptables-save', '/sbin/iptables-restore']:
     content => "#!/bin/sh\nexit 0",
     owner   => root,
     group   => root,
     mode    => '0770',
-  }
-
-  file { '/usr/lib/python2.7/dist-packages/nova/scheduler/filters/aggregate_image_properties_isolation_dc.py':
-    ensure  => present,
-    content => file('dc_openstack/aggregate_image_properties_isolation_dc.py'),
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    require =>  Package['python-nova'],
   }
 
 }

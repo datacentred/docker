@@ -29,7 +29,7 @@ cinder:
 	@if [ $(PUSH) == true ]; then docker push $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF) ; fi
 
 nova:
-	$(PDB) --expose=8774,8775 --from ubuntu:14.04
+	$(PDB) --expose=8774,8775
 	docker tag $@ $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF)
 	@if [ $(PUSH) == true ]; then docker push $(REGISTRY)/$(DOMAIN)/$@:$(VCSREF) ; fi
 
